@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+	<head>
+
+		<meta charset = "UTF-8">
+
+		<meta name    = "viewport"
+			  content = "width = device-width, initial-scale = 1.0, minimum-scale = 1.0, maximum-scale = 1.0, user-scalable = no">
+
+		<link rel   = "icon"
+			  href  = "/favicon.ico"
+			  sizes = "any">
+
+		<link rel  = "icon"
+			  href = "/favicon.svg"
+			  type = "image/svg+xml">
+
+		<link rel  = "apple-touch-icon"
+			  href = "/apple_touch_icon.png">
+
+		<link rel  = "manifest"
+			  href = "/manifest.json">
+
+		<script src = "/wasm_exec.js"></script>
+		<script src = "/wasm_start.js"></script>
+
+		<script>
+
+			wasmStart('{{ . }}');
+
+		</script>
+
+		<title>DummyAI</title>
+
+	</head>
+
+	<body></body>
+
+</html>
