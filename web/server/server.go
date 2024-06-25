@@ -36,3 +36,9 @@ func executeServerTemplate(responseWriter http.ResponseWriter, wasmRoute string)
 		panic(err)
 	}
 }
+
+func error404(responseWriter http.ResponseWriter) {
+
+	responseWriter.WriteHeader(http.StatusNotFound)
+	executeServerTemplate(responseWriter, "/error_404.wasm")
+}
