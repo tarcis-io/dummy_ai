@@ -29,6 +29,20 @@ func serveFile(route string, file string) {
 	})
 }
 
+func servePage(route string, wasmRoute string) {
+
+	http.HandleFunc(route, func(responseWriter http.ResponseWriter, request *http.Request) {
+
+		if request.URL.Path != route {
+
+			error404(responseWriter)
+			return
+		}
+
+		executeServerTemplate(responseWriter, wasmRoute)
+	})
+}
+
 func executeServerTemplate(responseWriter http.ResponseWriter, wasmRoute string) {
 
 	if err := serverTemplate.Execute(responseWriter, wasmRoute); err != nil {
