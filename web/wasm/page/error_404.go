@@ -11,6 +11,4 @@ func main() {
 
 	body := js.Global().Get("document").Get("body")
 	body.Call("appendChild", h2)
-
-	select {}
 }
