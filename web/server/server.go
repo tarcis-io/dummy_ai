@@ -28,3 +28,11 @@ func serveFile(route string, file string) {
 		http.ServeFile(responseWriter, request, file)
 	})
 }
+
+func executeServerTemplate(responseWriter http.ResponseWriter, wasmRoute string) {
+
+	if err := serverTemplate.Execute(responseWriter, wasmRoute); err != nil {
+
+		panic(err)
+	}
+}
