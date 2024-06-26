@@ -32,7 +32,7 @@ func Start() {
 
 	servePage("/" /* */, "/index.wasm")
 
-	if err := http.ListenAndServe(env.ServerAddress, nil); err != nil {
+	if err := http.ListenAndServe(env.ServerAddress(), nil); err != nil {
 
 		panic(err)
 	}

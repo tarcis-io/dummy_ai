@@ -5,8 +5,13 @@ import (
 )
 
 var (
-	ServerAddress = get("SERVER_ADDRESS", ":3000")
+	serverAddress = get("SERVER_ADDRESS", ":3000")
 )
+
+func ServerAddress() string {
+
+	return serverAddress
+}
 
 func get(key string, defaultValue string) string {
 
