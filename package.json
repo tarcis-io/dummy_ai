@@ -8,9 +8,11 @@
 		"start" : "next start"
 	},
 	"dependencies"    : {
-		"next"      : "latest",
-		"react"     : "latest",
-		"react-dom" : "latest"
+		"@patternfly/react-core"  : "prerelease",
+		"@patternfly/react-icons" : "prerelease",
+		"next"                    : "latest",
+		"react"                   : "latest",
+		"react-dom"               : "latest"
 	},
 	"devDependencies" : {
 		"@types/node"      : "latest",
