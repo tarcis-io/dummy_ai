@@ -1,7 +1,7 @@
-# node
+# Node
 /node_modules/
 
-# next
+# Next.js
 /.next/
 /build/
 
