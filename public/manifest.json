@@ -1,0 +1,21 @@
+{
+	"name"        : "DummyAI",
+	"short_name"  : "DummyAI",
+	"description" : "Artificial intelligence for dummies",
+	"display"     : "standalone",
+	"start_url"   : "/",
+	"id"          : "/",
+	"theme_color" : "#151515",
+	"icons"       : [
+		{
+			"src"   : "/images/favicons/favicon_192x192.png",
+			"type"  : "image/png",
+			"sizes" : "192x192"
+		},
+		{
+			"src"   : "/images/favicons/favicon_512x512.png",
+			"type"  : "image/png",
+			"sizes" : "512x512"
+		}
+	]
+}
