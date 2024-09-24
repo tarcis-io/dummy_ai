@@ -1,19 +1,13 @@
-'use client';
-
-import {
-	Page,
-	PageSection
-} from '@patternfly/react-core';
+export const metadata = {
+	title       : 'DummyAI',
+	description : 'Artificial intelligence for dummies'
+};
 
 export default function Layout({ children }) {
 
 	return (
 		<html lang = { 'en' }>
-			<body>
-				<Page>
-					<PageSection>{ children }</PageSection>
-				</Page>
-			</body>
+			<body>{ children }</body>
 		</html>
 	);
 };
