@@ -4,7 +4,6 @@
 # Next.js
 /.next/
 /build/
-next-env.d.ts
 
 # IDE
 .idea/
