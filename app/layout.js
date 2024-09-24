@@ -1,12 +1,13 @@
 export const metadata = {
 	title       : 'DummyAI',
-	description : 'Artificial intelligence for dummies'
+	description : 'Artificial intelligence for dummies',
+	manifest    : 'manifest.json'
 };
 
 export default function Layout({ children }) {
 
 	return (
-		<html lang = { 'en' }>
+		<html>
 			<body>{ children }</body>
 		</html>
 	);
