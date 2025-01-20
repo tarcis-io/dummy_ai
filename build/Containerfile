@@ -13,3 +13,6 @@ RUN CGO_ENABLED=0 go build -o app ./cmd/dummy_ai/
 
 FROM scratch AS app
 WORKDIR /app
+
+COPY --from=build /etc/passwd /etc/passwd
+USER app-user
