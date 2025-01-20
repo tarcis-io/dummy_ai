@@ -10,3 +10,6 @@ COPY cmd/dummy_ai/main.go cmd/dummy_ai/
 COPY internal/env/env.go internal/env/
 COPY internal/server/server.go internal/server/
 RUN CGO_ENABLED=0 go build -o app ./cmd/dummy_ai/
+
+FROM scratch AS app
+WORKDIR /app
