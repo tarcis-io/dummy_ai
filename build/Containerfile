@@ -16,3 +16,6 @@ WORKDIR /app
 
 COPY --from=build /etc/passwd /etc/passwd
 USER app-user
+
+COPY --chown=app-user --from=build build/app .
+COPY --chown=app-user static/ static/
