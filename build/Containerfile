@@ -19,3 +19,7 @@ USER app-user
 
 COPY --chown=app-user --from=build build/app .
 COPY --chown=app-user static/ static/
+
+EXPOSE 8080
+
+ENTRYPOINT ["./app"]
