@@ -15,6 +15,16 @@ var (
 
 func Start() {
 
+	staticFiles := map[string]string{
+		"/error_404.wasm": "./static/wasm/error_404.wasm",
+		"/index.wasm":     "./static/wasm/index.wasm",
+	}
+
+	for route, staticFile := range staticFiles {
+
+		handleFile(route, staticFile)
+	}
+
 	listenAndServe()
 }
 
