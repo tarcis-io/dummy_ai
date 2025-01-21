@@ -25,6 +25,15 @@ func Start() {
 		handleFile(route, staticFile)
 	}
 
+	pages := map[string]string{
+		"/": "/index.wasm",
+	}
+
+	for route, wasmRoute := range pages {
+
+		handlePage(route, wasmRoute)
+	}
+
 	listenAndServe()
 }
 
