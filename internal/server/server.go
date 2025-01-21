@@ -4,6 +4,10 @@ import (
 	"net/http"
 )
 
+import (
+	"dummy_ai/internal/env"
+)
+
 func Start() {
 
 	listenAndServe()
@@ -11,7 +15,7 @@ func Start() {
 
 func listenAndServe() {
 
-	if err := http.ListenAndServe(":8080", nil); err != nil {
+	if err := http.ListenAndServe(env.ServerAddress(), nil); err != nil {
 
 		panic(err)
 	}
