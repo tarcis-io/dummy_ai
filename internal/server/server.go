@@ -16,6 +16,8 @@ var (
 func Start() {
 
 	staticFiles := map[string]string{
+		"/wasm_exec.js":   "./static/lib/wasm/wasm_exec.js",
+		"/wasm_start.js":  "./static/lib/wasm/wasm_start.js",
 		"/error_404.wasm": "./static/wasm/error_404.wasm",
 		"/index.wasm":     "./static/wasm/index.wasm",
 	}
