@@ -3,6 +3,19 @@
 
 	<head>
 
+		<meta charset = "UTF-8">
+
+		<script src = "/wasm_exec.js"></script>
+		<script src = "/wasm_start.js"></script>
+
+		<script>
+
+			"use strict";
+
+			wasmStart("{{ . }}")
+
+		</script>
+
 		<title>DummyAI</title>
 
 	</head>
