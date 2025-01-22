@@ -16,10 +16,16 @@ var (
 func Start() {
 
 	staticFiles := map[string]string{
-		"/wasm_exec.js":   "./static/lib/wasm/wasm_exec.js",
-		"/wasm_start.js":  "./static/lib/wasm/wasm_start.js",
-		"/error_404.wasm": "./static/wasm/error_404.wasm",
-		"/index.wasm":     "./static/wasm/index.wasm",
+		"/apple_touch_icon.png":     "./static/img/favicon/apple_touch_icon.png",
+		"/favicon.ico":              "./static/img/favicon/favicon.ico",
+		"/favicon.svg":              "./static/img/favicon/favicon.svg",
+		"/favicon_192.png":          "./static/img/favicon/favicon_192.png",
+		"/favicon_512.png":          "./static/img/favicon/favicon_512.png",
+		"/favicon_512_maskable.png": "./static/img/favicon/favicon_512_maskable.png",
+		"/wasm_exec.js":             "./static/lib/wasm/wasm_exec.js",
+		"/wasm_start.js":            "./static/lib/wasm/wasm_start.js",
+		"/error_404.wasm":           "./static/wasm/error_404.wasm",
+		"/index.wasm":               "./static/wasm/index.wasm",
 	}
 
 	for route, staticFile := range staticFiles {
