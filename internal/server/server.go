@@ -22,6 +22,8 @@ func Start() {
 		"/favicon_192.png":          "./static/img/favicon/favicon_192.png",
 		"/favicon_512.png":          "./static/img/favicon/favicon_512.png",
 		"/favicon_512_maskable.png": "./static/img/favicon/favicon_512_maskable.png",
+		"/logo.svg":                 "./static/img/logo/logo.svg",
+		"/logo_white.svg":           "./static/img/logo/logo_white.svg",
 		"/wasm_exec.js":             "./static/lib/wasm/wasm_exec.js",
 		"/wasm_start.js":            "./static/lib/wasm/wasm_start.js",
 		"/error_404.wasm":           "./static/wasm/error_404.wasm",
