@@ -16,6 +16,9 @@ var (
 func Start() {
 
 	staticFiles := map[string]string{
+		"/manifest.json":            "./static/config/manifest.json",
+		"/robots.txt":               "./static/config/robots.txt",
+		"/sitemap.xml":              "./static/config/sitemap.xml",
 		"/apple_touch_icon.png":     "./static/img/favicon/apple_touch_icon.png",
 		"/favicon.ico":              "./static/img/favicon/favicon.ico",
 		"/favicon.svg":              "./static/img/favicon/favicon.svg",
