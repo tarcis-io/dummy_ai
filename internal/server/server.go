@@ -27,6 +27,7 @@ func Start() {
 		"/favicon_512_maskable.png": "./static/img/favicon/favicon_512_maskable.png",
 		"/logo.svg":                 "./static/img/logo/logo.svg",
 		"/logo_white.svg":           "./static/img/logo/logo_white.svg",
+		"/patternfly.min.css":       "./static/lib/patternfly/patternfly.min.css",
 		"/wasm_exec.js":             "./static/lib/wasm/wasm_exec.js",
 		"/wasm_start.js":            "./static/lib/wasm/wasm_start.js",
 		"/error_404.wasm":           "./static/wasm/error_404.wasm",
