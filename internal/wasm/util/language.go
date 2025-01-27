@@ -35,6 +35,20 @@ func preferredLanguage() string {
 		return language
 	}
 
+	if language := js.Global().Get("navigator").Get("language").String(); language != "" {
+
+		if len(language) > 2 {
+
+			language = language[:2]
+		}
+
+		if isSupportedLanguage(language) {
+
+			SetLanguage(language)
+			return language
+		}
+	}
+
 	language := DefaultLanguage
 	SetLanguage(language)
 
