@@ -30,6 +30,11 @@ func SetLanguage(language string) {
 
 func preferredLanguage() string {
 
+	if language := js.Global().Get("localStorage").Call("getItem", "language").String(); isSupportedLanguage(language) {
+
+		return language
+	}
+
 	language := DefaultLanguage
 	SetLanguage(language)
 
