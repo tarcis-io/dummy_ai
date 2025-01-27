@@ -15,7 +15,7 @@ const (
 )
 
 var (
-	language = DefaultLanguage
+	language = preferredLanguage()
 )
 
 func Language() string {
@@ -26,4 +26,12 @@ func Language() string {
 func SetLanguage(language string) {
 
 	js.Global().Get("localStorage").Call("setItem", "language", language)
+}
+
+func preferredLanguage() string {
+
+	language := DefaultLanguage
+	SetLanguage(language)
+
+	return language
 }
