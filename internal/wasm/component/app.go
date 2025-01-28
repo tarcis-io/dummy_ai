@@ -4,6 +4,11 @@ import (
 	"syscall/js"
 )
 
+func CreateApp(pageContent js.Value) js.Value {
+
+	return createAppPage(pageContent)
+}
+
 func createAppPage(pageContent js.Value) js.Value {
 
 	pageMainBody := js.Global().Get("document").Call("createElement", "div")
