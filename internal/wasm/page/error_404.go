@@ -16,7 +16,7 @@ func main() {
 
 	app := component.CreateApp(h2)
 
-	html := js.Global().Get("document").Get("html")
+	html := js.Global().Get("document").Get("documentElement")
 	html.Set("lang", util.Language())
 	html.Set("className", "pf-v6-theme-dark")
 
