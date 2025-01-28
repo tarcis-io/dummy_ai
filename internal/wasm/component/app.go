@@ -7,7 +7,7 @@ import (
 func CreateApp(pageContent js.Value) js.Value {
 
 	mastheadMain := js.Global().Get("document").Call("createElement", "div")
-	mastheadMain.Set("classNAme", "pf-v6-c-masthead__main")
+	mastheadMain.Set("className", "pf-v6-c-masthead__main")
 
 	masthead := js.Global().Get("document").Call("createElement", "header")
 	masthead.Set("className", "pf-v6-c-masthead")
