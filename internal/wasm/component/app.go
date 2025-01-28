@@ -4,6 +4,14 @@ import (
 	"syscall/js"
 )
 
+func createAppPage(pageContent js.Value) js.Value {
+
+	page := js.Global().Get("document").Call("createElement", "div")
+	page.Set("className", "pf-v6-c-page")
+
+	return page
+}
+
 func createPage() js.Value {
 
 	pageMainContainer := js.Global().Get("document").Call("createElement", "div")
