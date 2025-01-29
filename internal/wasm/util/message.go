@@ -3,6 +3,7 @@ package util
 const (
 	app = iota
 	appDescription
+	appNavigation
 )
 
 var (
@@ -10,14 +11,17 @@ var (
 		English: {
 			app:            "DummyAI",
 			appDescription: "Artificial intelligence for dummies",
+			appNavigation:  "Navigation",
 		},
 		Spanish: {
 			app:            "DummyAI",
 			appDescription: "Artificial intelligence for dummies",
+			appNavigation:  "Navegación",
 		},
 		Portuguese: {
 			app:            "DummyAI",
 			appDescription: "Artificial intelligence for dummies",
+			appNavigation:  "Navegação",
 		},
 	}
 	messages = allMessages[language]
@@ -31,4 +35,9 @@ func App() string {
 func AppDescription() string {
 
 	return messages[appDescription]
+}
+
+func AppNavigation() string {
+
+	return messages[appNavigation]
 }
