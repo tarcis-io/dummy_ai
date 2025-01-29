@@ -19,7 +19,8 @@ func CreateApp(pageContent js.Value) js.Value {
 	navigationButtonIcon.Call("appendChild", navigationIcon)
 
 	navigationButton := js.Global().Get("document").Call("createElement", "button")
-	navigationButton.Set("className", "pf-v6-button pf-m-plain")
+	navigationButton.Set("className", "pf-v6-c-button pf-m-plain")
+	navigationButton.Set("type", "button")
 	navigationButton.Set("ariaLabel", util.AppButtonNavigationAriaLabel())
 	navigationButton.Call("appendChild", navigationButtonIcon)
 
