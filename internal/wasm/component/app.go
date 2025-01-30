@@ -4,10 +4,6 @@ import (
 	"syscall/js"
 )
 
-import (
-	"dummy_ai/internal/wasm/util"
-)
-
 func CreateApp(pageContent js.Value) js.Value {
 
 	navigationIcon := js.Global().Get("document").Call("createElement", "i")
@@ -21,7 +17,6 @@ func CreateApp(pageContent js.Value) js.Value {
 	navigationButton := js.Global().Get("document").Call("createElement", "button")
 	navigationButton.Set("className", "pf-v6-c-button pf-m-plain")
 	navigationButton.Set("type", "button")
-	navigationButton.Set("ariaLabel", util.AppButtonNavigationAriaLabel())
 	navigationButton.Call("appendChild", navigationButtonIcon)
 
 	mastheadToggle := js.Global().Get("document").Call("createElement", "span")
