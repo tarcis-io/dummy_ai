@@ -3,25 +3,25 @@ package util
 const (
 	app = iota
 	appDescription
-	appButtonNavigationAriaLabel
+	mastheadNavigationButtonAriaLabel
 )
 
 var (
 	allMessages = map[string]map[int]string{
 		English: {
-			app:                          "DummyAI",
-			appDescription:               "Artificial intelligence for dummies",
-			appButtonNavigationAriaLabel: "Navigation",
+			app:                               "DummyAI",
+			appDescription:                    "Artificial intelligence for dummies",
+			mastheadNavigationButtonAriaLabel: "Navigation",
 		},
 		Spanish: {
-			app:                          "DummyAI",
-			appDescription:               "Artificial intelligence for dummies",
-			appButtonNavigationAriaLabel: "Navegación",
+			app:                               "DummyAI",
+			appDescription:                    "Artificial intelligence for dummies",
+			mastheadNavigationButtonAriaLabel: "Navegación",
 		},
 		Portuguese: {
-			app:                          "DummyAI",
-			appDescription:               "Artificial intelligence for dummies",
-			appButtonNavigationAriaLabel: "Navegação",
+			app:                               "DummyAI",
+			appDescription:                    "Artificial intelligence for dummies",
+			mastheadNavigationButtonAriaLabel: "Navegação",
 		},
 	}
 	messages = allMessages[language]
@@ -37,7 +37,7 @@ func AppDescription() string {
 	return messages[appDescription]
 }
 
-func AppButtonNavigationAriaLabel() string {
+func MastheadNavigationButtonAriaLabel() string {
 
-	return messages[appButtonNavigationAriaLabel]
+	return messages[mastheadNavigationButtonAriaLabel]
 }
