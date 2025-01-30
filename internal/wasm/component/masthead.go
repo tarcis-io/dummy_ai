@@ -28,9 +28,13 @@ func CreateMasthead() js.Value {
 	mastheadToggle.Set("className", "pf-v6-c-masthead__toggle")
 	mastheadToggle.Call("appendChild", navigationButton)
 
+	img := js.Global().Get("document").Call("createElement", "img")
+	img.Set("src", "/logo.svg")
+
 	mastheadLogo := js.Global().Get("document").Call("createElement", "a")
 	mastheadLogo.Set("className", "pf-v6-c-masthead__logo")
 	mastheadLogo.Set("href", "/")
+	mastheadLogo.Call("appendChild", img)
 
 	mastheadBrand := js.Global().Get("document").Call("createElement", "div")
 	mastheadBrand.Set("className", "pf-v6-c-masthead__brand")
