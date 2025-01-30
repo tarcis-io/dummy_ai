@@ -46,7 +46,7 @@ func CreateMasthead() js.Value {
 	mastheadMain.Call("appendChild", mastheadBrand)
 
 	masthead := js.Global().Get("document").Call("createElement", "header")
-	masthead.Set("className", "pf-v6-c-masthead")
+	masthead.Set("className", "pf-v6-c-masthead pf-m-display-inline")
 	masthead.Call("appendChild", mastheadMain)
 
 	return masthead
