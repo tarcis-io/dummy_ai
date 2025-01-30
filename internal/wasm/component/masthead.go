@@ -16,10 +16,12 @@ func CreateMasthead() js.Value {
 
 	navigationButton := js.Global().Get("document").Call("createElement", "button")
 	navigationButton.Set("className", "pf-v6-c-button pf-m-plain")
+	navigationButton.Set("type", "button")
 	navigationButton.Call("appendChild", navigationButtonIcon)
 
 	mastheadToggle := js.Global().Get("document").Call("createElement", "span")
 	mastheadToggle.Set("className", "pf-v6-c-masthead__toggle")
+	mastheadToggle.Call("appendChild", navigationButton)
 
 	mastheadMain := js.Global().Get("document").Call("createElement", "div")
 	mastheadMain.Set("className", "pf-v6-c-masthead__main")
