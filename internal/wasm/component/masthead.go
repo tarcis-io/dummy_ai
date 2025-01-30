@@ -6,6 +6,10 @@ import (
 
 func CreateMasthead() js.Value {
 
+	navigationIcon := js.Global().Get("document").Call("createElement", "i")
+	navigationIcon.Set("className", "fas fa-bars")
+	navigationIcon.Set("ariaHidden", true)
+
 	mastheadToggle := js.Global().Get("document").Call("createElement", "span")
 	mastheadToggle.Set("className", "pf-v6-c-masthead__toggle")
 
