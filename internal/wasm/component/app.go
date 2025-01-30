@@ -28,9 +28,13 @@ func CreateApp(pageContent js.Value) js.Value {
 	mastheadToggle.Set("className", "pf-v6-c-masthead__toggle")
 	mastheadToggle.Call("appendChild", navigationButton)
 
+	mastheadBrand := js.Global().Get("document").Call("createElement", "div")
+	mastheadBrand.Set("className", "pf-v6-c-masthead__brand")
+
 	mastheadMain := js.Global().Get("document").Call("createElement", "div")
 	mastheadMain.Set("className", "pf-v6-c-masthead__main")
 	mastheadMain.Call("appendChild", mastheadToggle)
+	mastheadMain.Call("appendChild", mastheadBrand)
 
 	masthead := js.Global().Get("document").Call("createElement", "header")
 	masthead.Set("className", "pf-v6-c-masthead")
