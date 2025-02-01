@@ -39,6 +39,7 @@ func CreateMasthead() js.Value {
 	mastheadLogo.Set("className", "pf-v6-c-masthead__logo")
 	mastheadLogo.Set("href", "/")
 	mastheadLogo.Get("style").Set("textDecoration", "none")
+	mastheadLogo.Get("style").Set("color", "var(--pf-t--global--text--color--regular)")
 	mastheadLogo.Call("appendChild", img)
 	mastheadLogo.Call("appendChild", title)
 
