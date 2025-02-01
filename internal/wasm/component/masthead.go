@@ -32,7 +32,7 @@ func CreateMasthead() js.Value {
 	img.Set("src", "/logo.svg")
 
 	title := js.Global().Get("document").Call("createElement", "div")
-	title.Set("className", "pf-v6-c-title")
+	title.Set("className", "pf-v6-c-title pf-m-h1 pf-m-page-title")
 	title.Set("innerText", util.App())
 
 	mastheadLogo := js.Global().Get("document").Call("createElement", "a")
