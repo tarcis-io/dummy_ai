@@ -40,7 +40,7 @@ func createSidebarNavigationItem(text string, href string) js.Value {
 	navigationLink := js.Global().Get("document").Call("createElement", "a")
 	navigationLink.Set("className", "pf-v6-c-nav__link")
 	navigationLink.Set("href", href)
-	navigationLink.Call("appendChild", navigationLink)
+	navigationLink.Call("appendChild", navigationLinkText)
 
 	navigationItem := js.Global().Get("document").Call("createElement", "li")
 	navigationItem.Set("className", "pf-v6-c-nav__item")
