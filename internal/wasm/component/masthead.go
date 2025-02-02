@@ -30,6 +30,7 @@ func CreateMasthead() js.Value {
 
 	img := js.Global().Get("document").Call("createElement", "img")
 	img.Set("src", "/logo.svg")
+	img.Set("alt", "")
 
 	title := js.Global().Get("document").Call("createElement", "div")
 	title.Set("className", "pf-v6-c-title pf-m-h1 pf-m-page-title pf-v6-u-display-inline pf-v6-u-ml-md pf-v6-u-text-color-regular")
