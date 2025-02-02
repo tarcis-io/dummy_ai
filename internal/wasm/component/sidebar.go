@@ -52,6 +52,7 @@ func createSidebarNavigationItem(text string, href string) js.Value {
 
 	if pathname := js.Global().Get("location").Get("pathname").String(); pathname == href {
 
+		navigationLink.Set("ariaCurrent", "page")
 		navigationLink.Get("classList").Call("add", "pf-m-current")
 	}
 
