@@ -20,6 +20,7 @@ func Start() {
 		"/robots.txt":                   "./static/config/robots.txt",
 		"/sitemap.xml":                  "./static/config/sitemap.xml",
 		"/fa-solid-900.woff2":           "./static/font/fa-solid-900.woff2",
+		"/pf-v6-pficon.woff2":           "./static/font/v6-pficon.woff2",
 		"/RedHatDisplayVF.woff2":        "./static/font/RedHatDisplayVF.woff2",
 		"/RedHatDisplayVF-Italic.woff2": "./static/font/RedHatDisplayVF-Italic.woff2",
 		"/RedHatMonoVF.woff2":           "./static/font/RedHatMonoVF.woff2",
