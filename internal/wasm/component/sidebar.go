@@ -24,3 +24,21 @@ func CreateSidebar() js.Value {
 
 	return sidebar
 }
+
+func createSidebarNavigationItem(text string, href string) js.Value {
+
+	navigationLinkText := js.Global().Get("document").Call("createElement", "span")
+	navigationLinkText.Set("className", "pf-v6-c-nav__link-text")
+	navigationLinkText.Set("innerText", text)
+
+	navigationLink := js.Global().Get("document").Call("createElement", "a")
+	navigationLink.Set("className", "pf-v6-c-nav__link")
+	navigationLink.Set("href", href)
+	navigationLink.Call("appendChild", navigationLink)
+
+	navigationItem := js.Global().Get("document").Call("createElement", "li")
+	navigationItem.Set("className", "pf-v6-c-nav__item")
+	navigationItem.Call("appendChild", navigationLink)
+
+	return navigationItem
+}
