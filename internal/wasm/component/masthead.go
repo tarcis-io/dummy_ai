@@ -32,14 +32,13 @@ func CreateMasthead() js.Value {
 	img.Set("src", "/logo.svg")
 
 	title := js.Global().Get("document").Call("createElement", "div")
-	title.Set("className", "pf-v6-c-title pf-m-h1 pf-m-page-title pf-v6-u-display-inline pf-v6-u-ml-md")
+	title.Set("className", "pf-v6-c-title pf-m-h1 pf-m-page-title pf-v6-u-display-inline pf-v6-u-ml-md pf-v6-u-text-color-regular")
 	title.Set("innerText", util.App())
 
 	mastheadLogo := js.Global().Get("document").Call("createElement", "a")
 	mastheadLogo.Set("className", "pf-v6-c-masthead__logo")
 	mastheadLogo.Set("href", "/")
 	mastheadLogo.Get("style").Set("textDecoration", "none")
-	mastheadLogo.Get("style").Set("color", "var(--pf-t--global--text--color--regular)")
 	mastheadLogo.Call("appendChild", img)
 	mastheadLogo.Call("appendChild", title)
 
