@@ -4,6 +4,7 @@ const (
 	app = iota
 	appDescription
 	mastheadNavigationButtonAriaLabel
+	sidebarHomeNavigationItem
 )
 
 var (
@@ -12,16 +13,19 @@ var (
 			app:                               "DummyAI",
 			appDescription:                    "Artificial intelligence for dummies",
 			mastheadNavigationButtonAriaLabel: "Navigation",
+			sidebarHomeNavigationItem:         "Home",
 		},
 		Spanish: {
 			app:                               "DummyAI",
 			appDescription:                    "Artificial intelligence for dummies",
 			mastheadNavigationButtonAriaLabel: "Navegación",
+			sidebarHomeNavigationItem:         "",
 		},
 		Portuguese: {
 			app:                               "DummyAI",
 			appDescription:                    "Artificial intelligence for dummies",
 			mastheadNavigationButtonAriaLabel: "Navegação",
+			sidebarHomeNavigationItem:         "Início",
 		},
 	}
 	messages = allMessages[language]
@@ -40,4 +44,9 @@ func AppDescription() string {
 func MastheadNavigationButtonAriaLabel() string {
 
 	return messages[mastheadNavigationButtonAriaLabel]
+}
+
+func SidebarHomeNavigationItem() string {
+
+	return messages[sidebarHomeNavigationItem]
 }
