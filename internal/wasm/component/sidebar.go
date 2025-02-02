@@ -15,6 +15,7 @@ func CreateSidebar() js.Value {
 
 	sidebarBody := js.Global().Get("document").Call("createElement", "div")
 	sidebarBody.Set("className", "pf-v6-c-page__sidebar-body")
+	sidebarBody.Call("appendChild", navigation)
 
 	sidebar := js.Global().Get("document").Call("createElement", "div")
 	sidebar.Set("className", "pf-v6-c-page__sidebar")
