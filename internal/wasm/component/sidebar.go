@@ -4,11 +4,17 @@ import (
 	"syscall/js"
 )
 
+import (
+	"dummy_ai/internal/wasm/util"
+)
+
 func CreateSidebar() js.Value {
 
 	navigationList := js.Global().Get("document").Call("createElement", "ul")
 	navigationList.Set("className", "pf-v6-c-nav__list")
 	navigationList.Set("role", "list")
+	navigationList.Call("appendChild", createSidebarNavigationItem(util.SidebarHomeNavigationItem(), "/"))
+	navigationList.Call("appendChild", createSidebarNavigationItem(util.SidebarAboutNavigationItem(), "/about"))
 
 	navigation := js.Global().Get("document").Call("createElement", "nav")
 	navigation.Set("className", "pf-v6-c-nav")
