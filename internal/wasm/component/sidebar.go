@@ -8,6 +8,7 @@ func CreateSidebar() js.Value {
 
 	navigationList := js.Global().Get("document").Call("createElement", "ul")
 	navigationList.Set("className", "pf-v6-c-nav__list")
+	navigationList.Set("role", "list")
 
 	navigation := js.Global().Get("document").Call("createElement", "nav")
 	navigation.Set("className", "pf-v6-c-nav")
