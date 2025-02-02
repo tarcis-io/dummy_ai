@@ -19,7 +19,7 @@ var (
 			app:                               "DummyAI",
 			appDescription:                    "Artificial intelligence for dummies",
 			mastheadNavigationButtonAriaLabel: "Navegación",
-			sidebarHomeNavigationItem:         "",
+			sidebarHomeNavigationItem:         "Inicio",
 		},
 		Portuguese: {
 			app:                               "DummyAI",
