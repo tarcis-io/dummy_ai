@@ -35,7 +35,6 @@ func Start() {
 		"/logo.svg":                     "./static/img/logo/logo.svg",
 		"/logo_white.svg":               "./static/img/logo/logo_white.svg",
 		"/patternfly.min.css":           "./static/lib/patternfly/patternfly.min.css",
-		"/patternfly.min.css.map":       "./static/lib/patternfly/patternfly.min.css.map",
 		"/wasm_exec.js":                 "./static/lib/wasm/wasm_exec.js",
 		"/wasm_start.js":                "./static/lib/wasm/wasm_start.js",
 		"/error_404.wasm":               "./static/wasm/error_404.wasm",
