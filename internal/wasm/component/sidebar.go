@@ -56,14 +56,18 @@ func CreateSidebar() js.Value {
 	sidebar.Set("id", "sidebar")
 	sidebar.Call("appendChild", sidebarBody)
 
-	if expanded := js.Global().Call("matchMedia", "screen and (min-width: 75rem)").Get("matches").Bool(); expanded {
-	}
-
 	return sidebar
 }
 
 func ToggleSidebar() {
 
 	sidebar := js.Global().Get("document").Call("getElementById", "sidebar")
-	sidebar.Get("classList").Call("toggle", "pf-m-expanded")
+
+	if expanded := js.Global().Call("matchMedia", "screen and (min-width: 75rem)").Get("matches").Bool(); expanded {
+
+		sidebar.Get("classList").Call("toggle", "pf-m-expanded")
+		return
+	}
+
+	sidebar.Get("classList").Call("toggle", "pf-m-collapsed")
 }
