@@ -57,3 +57,17 @@ func CreateSidebar() js.Value {
 
 	return sidebar
 }
+
+func OpenSidebar() {
+
+	sidebar := js.Global().Get("document").Call("getElementById", "sidebar")
+	sidebar.Get("classList").Call("add", "pf-m-expanded")
+	sidebar.Get("classList").Call("remove", "pf-m-collapsed")
+}
+
+func CloseSidebar() {
+
+	sidebar := js.Global().Get("document").Call("getElementById", "sidebar")
+	sidebar.Get("classList").Call("add", "pf-m-collapsed")
+	sidebar.Get("classList").Call("remove", "pf-m-expanded")
+}
