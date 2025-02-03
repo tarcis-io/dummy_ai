@@ -21,7 +21,26 @@ func CreateSidebar() js.Value {
 
 	for href, text := range navigationItems {
 
-		navigationList.Call("appendChild", createSidebarNavigationItem(text, href))
+		navigationLinkText := js.Global().Get("document").Call("createElement", "span")
+		navigationLinkText.Set("className", "pf-v6-c-nav__link-text")
+		navigationLinkText.Set("innerText", text)
+
+		navigationLink := js.Global().Get("document").Call("createElement", "a")
+		navigationLink.Set("className", "pf-v6-c-nav__link")
+		navigationLink.Set("href", href)
+		navigationLink.Call("appendChild", navigationLinkText)
+
+		if pathname := js.Global().Get("location").Get("pathname").String(); pathname == href {
+
+			navigationLink.Get("classList").Call("add", "pf-m-current")
+			navigationLink.Set("ariaCurrent", "page")
+		}
+
+		navigationItem := js.Global().Get("document").Call("createElement", "li")
+		navigationItem.Set("className", "pf-v6-c-nav__item")
+		navigationItem.Call("appendChild", navigationLink)
+
+		navigationList.Call("appendChild", navigationItem)
 	}
 
 	navigation := js.Global().Get("document").Call("createElement", "nav")
@@ -37,28 +56,4 @@ func CreateSidebar() js.Value {
 	sidebar.Call("appendChild", sidebarBody)
 
 	return sidebar
-}
-
-func createSidebarNavigationItem(text string, href string) js.Value {
-
-	navigationLinkText := js.Global().Get("document").Call("createElement", "span")
-	navigationLinkText.Set("className", "pf-v6-c-nav__link-text")
-	navigationLinkText.Set("innerText", text)
-
-	navigationLink := js.Global().Get("document").Call("createElement", "a")
-	navigationLink.Set("className", "pf-v6-c-nav__link")
-	navigationLink.Set("href", href)
-	navigationLink.Call("appendChild", navigationLinkText)
-
-	if pathname := js.Global().Get("location").Get("pathname").String(); pathname == href {
-
-		navigationLink.Get("classList").Call("add", "pf-m-current")
-		navigationLink.Set("ariaCurrent", "page")
-	}
-
-	navigationItem := js.Global().Get("document").Call("createElement", "li")
-	navigationItem.Set("className", "pf-v6-c-nav__item")
-	navigationItem.Call("appendChild", navigationLink)
-
-	return navigationItem
 }
