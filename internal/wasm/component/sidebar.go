@@ -68,5 +68,4 @@ func ToggleSidebar() {
 
 	sidebar := js.Global().Get("document").Call("getElementById", "sidebar")
 	sidebar.Get("classList").Call("toggle", "pf-m-expanded")
-	sidebar.Get("classList").Call("toggle", "pf-m-collapsed")
 }
