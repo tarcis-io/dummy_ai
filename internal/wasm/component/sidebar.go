@@ -56,6 +56,11 @@ func CreateSidebar() js.Value {
 	sidebar.Set("id", "sidebar")
 	sidebar.Call("appendChild", sidebarBody)
 
+	if expanded := js.Global().Call("matchMedia", "screen and (min-width: 75rem)").Bool(); expanded {
+
+		sidebar.Get("classList").Call("add", "pf-m-expanded")
+	}
+
 	return sidebar
 }
 
