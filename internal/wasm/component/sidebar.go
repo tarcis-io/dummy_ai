@@ -64,6 +64,14 @@ func CreateSidebar() js.Value {
 	return sidebar
 }
 
+func CreateSidebarNavigationItem() js.Value {
+
+	navigationItem := js.Global().Get("document").Call("createElement", "li")
+	navigationItem.Set("className", "pf-v6-c-nav__item")
+
+	return navigationItem
+}
+
 func ToggleSidebar() {
 
 	sidebar := js.Global().Get("document").Call("getElementById", "sidebar")
