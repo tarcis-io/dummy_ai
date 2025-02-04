@@ -24,8 +24,11 @@ func CreateSidebar() js.Value {
 	navigationList := js.Global().Get("document").Call("createElement", "ul")
 	navigationList.Set("className", "pf-v6-c-nav__list")
 	navigationList.Set("role", "list")
-	navigationList.Call("appendChild", CreateSidebarNavigationItem("/", util.SidebarHomeNavigationItem()))
-	navigationList.Call("appendChild", CreateSidebarNavigationItem("/about", util.SidebarAboutNavigationItem()))
+
+	for _, navigationItem := range navigationItems {
+
+		navigationList.Call("appendChild", CreateSidebarNavigationItem(navigationItem[0], navigationItem[1]))
+	}
 
 	navigation := js.Global().Get("document").Call("createElement", "nav")
 	navigation.Set("className", "pf-v6-c-nav")
