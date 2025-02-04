@@ -10,6 +10,17 @@ import (
 
 func CreateSidebar() js.Value {
 
+	navigationItems := [][]string{
+		{
+			"/",
+			util.SidebarHomeNavigationItem(),
+		},
+		{
+			"/about",
+			util.SidebarAboutNavigationItem(),
+		},
+	}
+
 	navigationList := js.Global().Get("document").Call("createElement", "ul")
 	navigationList.Set("className", "pf-v6-c-nav__list")
 	navigationList.Set("role", "list")
