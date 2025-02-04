@@ -7,7 +7,9 @@ import (
 func IsDesktop() bool {
 
 	breakpoint := js.Global().Call("getComputedStyle", js.Global().Get("document").Get("documentElement")).Call("getPropertyValue", "--pf-t--global--breakpoint--md").String()
-	return js.Global().Call("matchMedia", "screen and (min-width: "+breakpoint+")").Get("matches").Bool()
+	mediaQuery := "screen and (min-width: " + breakpoint + ")"
+
+	return js.Global().Call("matchMedia", mediaQuery).Get("matches").Bool()
 }
 
 func IsMobile() bool {
