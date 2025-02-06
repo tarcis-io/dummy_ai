@@ -23,6 +23,11 @@ func CreateMasthead() js.Value {
 	navigationButton.Set("type", "button")
 	navigationButton.Set("ariaLabel", util.MastheadNavigationButtonAriaLabel())
 	navigationButton.Call("appendChild", navigationButtonIcon)
+	navigationButton.Call("addEventListener", "click", js.FuncOf(func(this js.Value, args []js.Value) any {
+
+		ToggleSidebar()
+		return nil
+	}))
 
 	mastheadToggle := js.Global().Get("document").Call("createElement", "span")
 	mastheadToggle.Set("className", "pf-v6-c-masthead__toggle")
