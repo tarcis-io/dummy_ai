@@ -6,8 +6,13 @@ import (
 
 func CreateApp(pageContent js.Value) js.Value {
 
+	pageMainBody := js.Global().Get("document").Call("createElement", "div")
+	pageMainBody.Set("className", "pf-v6-c-page__main-body")
+	pageMainBody.Call("appendChild", pageContent)
+
 	pageMainSection := js.Global().Get("document").Call("createElement", "section")
 	pageMainSection.Set("className", "pf-v6-c-page__main-section pf-m-fill")
+	pageMainSection.Call("appendChild", pageMainBody)
 
 	pageMain := js.Global().Get("document").Call("createElement", "main")
 	pageMain.Set("className", "pf-v6-c-page__main")
