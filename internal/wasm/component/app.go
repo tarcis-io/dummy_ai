@@ -4,7 +4,7 @@ import (
 	"syscall/js"
 )
 
-func CreateApp() js.Value {
+func CreateApp(pageContent js.Value) js.Value {
 
 	pageMainContainer := js.Global().Get("document").Call("createElement", "div")
 	pageMainContainer.Set("className", "pf-v6-c-page__main-container")
