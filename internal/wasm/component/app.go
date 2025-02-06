@@ -7,7 +7,7 @@ import (
 func CreateApp(pageContent js.Value) js.Value {
 
 	pageMainContainer := js.Global().Get("document").Call("createElement", "div")
-	pageMainContainer.Set("className", "pf-v6-c-page__main-container")
+	pageMainContainer.Set("className", "pf-v6-c-page__main-container pf-m-fill")
 	pageMainContainer.Set("tabIndex", -1)
 
 	page := js.Global().Get("document").Call("createElement", "div")
