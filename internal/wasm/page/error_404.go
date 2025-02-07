@@ -30,10 +30,14 @@ func main() {
 	cardBody.Set("className", "pf-v6-c-card__body")
 	cardBody.Set("innerText", util.Error404Message())
 
+	cardFooter := js.Global().Get("document").Call("createElement", "div")
+	cardFooter.Set("className", "pf-v6-c-card__footer")
+
 	card := js.Global().Get("document").Call("createElement", "div")
 	card.Set("className", "pf-v6-c-card")
 	card.Call("appendChild", cardTitle)
 	card.Call("appendChild", cardBody)
+	card.Call("appendChild", cardFooter)
 
 	body := js.Global().Get("document").Get("body")
 	body.Call("appendChild", component.CreateApp(card))
