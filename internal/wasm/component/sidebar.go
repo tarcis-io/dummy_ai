@@ -8,6 +8,23 @@ import (
 	"dummy_ai/internal/wasm/util"
 )
 
+func init() {
+
+	js.Global().Call("addEventListener", "resize", js.FuncOf(func(this js.Value, args []js.Value) any {
+
+		sidebar := js.Global().Get("document").Call("getElementById", "sidebar")
+
+		if util.IsDesktop() {
+
+			sidebar.Get("classList").Call("add", "pf-m-expanded")
+			return nil
+		}
+
+		sidebar.Get("classList").Call("remove", "pf-m-expanded")
+		return nil
+	}))
+}
+
 func CreateSidebar() js.Value {
 
 	navigationItems := [][]string{
