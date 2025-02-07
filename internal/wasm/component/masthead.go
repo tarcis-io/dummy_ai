@@ -21,7 +21,7 @@ func CreateMasthead() js.Value {
 	navigationButton := js.Global().Get("document").Call("createElement", "button")
 	navigationButton.Set("className", "pf-v6-c-button pf-m-plain")
 	navigationButton.Set("type", "button")
-	navigationButton.Set("ariaLabel", util.MastheadNavigationButtonAriaLabel())
+	navigationButton.Set("ariaLabel", util.AriaLabelNavigation())
 	navigationButton.Call("appendChild", navigationButtonIcon)
 	navigationButton.Call("addEventListener", "click", js.FuncOf(func(this js.Value, args []js.Value) any {
 
