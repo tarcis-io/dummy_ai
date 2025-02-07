@@ -27,7 +27,7 @@ var (
 			app:                 "DummyAI",
 			appDescription:      "Artificial intelligence for dummies",
 			ariaLabelNavigation: "Navegación",
-			buttonReturnToHome:  "",
+			buttonReturnToHome:  "Volver al inicio",
 			error404:            "Error 404",
 			error404Message:     "Esa página ya no existe",
 			navigationItemAbout: "Sobre",
