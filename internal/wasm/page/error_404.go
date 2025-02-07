@@ -30,8 +30,18 @@ func main() {
 	cardBody.Set("className", "pf-v6-c-card__body")
 	cardBody.Set("innerText", util.Error404Message())
 
+	buttonText := js.Global().Get("document").Call("createElement", "span")
+	buttonText.Set("className", "pf-v6-c-button__text")
+	buttonText.Set("innerText", util.ButtonReturnToHome())
+
+	button := js.Global().Get("document").Call("createElement", "a")
+	button.Set("className", "pf-v6-c-button pf-m-primary")
+	button.Set("href", "/")
+	button.Call("appendChild", buttonText)
+
 	cardFooter := js.Global().Get("document").Call("createElement", "div")
 	cardFooter.Set("className", "pf-v6-c-card__footer")
+	cardFooter.Call("appendChild", button)
 
 	card := js.Global().Get("document").Call("createElement", "div")
 	card.Set("className", "pf-v6-c-card")
