@@ -20,7 +20,7 @@ var (
 		Spanish: {
 			app:                 "DummyAI",
 			appDescription:      "Artificial intelligence for dummies",
-			ariaLabelNavigation: "Navigation",
+			ariaLabelNavigation: "Navegación",
 			navigationItemAbout: "Sobre",
 			navigationItemHome:  "Inicio",
 		},
