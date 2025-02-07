@@ -18,12 +18,21 @@ func init() {
 
 func main() {
 
+	cardTitleText := js.Global().Get("document").Call("createElement", "h2")
+	cardTitleText.Set("className", "pf-v6-c-card__title-text")
+	cardTitleText.Set("innerText", util.Error404())
+
+	cardTitle := js.Global().Get("document").Call("createElement", "div")
+	cardTitle.Set("className", "pf-v6-c-card__title")
+	cardTitle.Call("appendChild", cardTitleText)
+
 	cardBody := js.Global().Get("document").Call("createElement", "div")
 	cardBody.Set("className", "pf-v6-c-card__body")
 	cardBody.Set("innerText", util.Error404Message())
 
 	card := js.Global().Get("document").Call("createElement", "div")
 	card.Set("className", "pf-v6-c-card")
+	card.Call("appendChild", cardTitle)
 	card.Call("appendChild", cardBody)
 
 	body := js.Global().Get("document").Get("body")
