@@ -18,12 +18,11 @@ func init() {
 
 func main() {
 
-	pageContent := js.Global().Get("document").Call("createElement", "div")
-
-	app := component.CreateApp(pageContent)
+	card := js.Global().Get("document").Call("createElement", "div")
+	card.Set("className", "pf-v6-c-card")
 
 	body := js.Global().Get("document").Get("body")
-	body.Call("appendChild", app)
+	body.Call("appendChild", component.CreateApp(card))
 
 	select {}
 }
