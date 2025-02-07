@@ -4,6 +4,7 @@ const (
 	app = iota
 	appDescription
 	ariaLabelNavigation
+	buttonReturnToHome
 	error404
 	error404Message
 	navigationItemAbout
@@ -16,6 +17,7 @@ var (
 			app:                 "DummyAI",
 			appDescription:      "Artificial intelligence for dummies",
 			ariaLabelNavigation: "Navigation",
+			buttonReturnToHome:  "Return to Home",
 			error404:            "Error 404",
 			error404Message:     "That page no longer exists",
 			navigationItemAbout: "About",
@@ -25,6 +27,7 @@ var (
 			app:                 "DummyAI",
 			appDescription:      "Artificial intelligence for dummies",
 			ariaLabelNavigation: "Navegación",
+			buttonReturnToHome:  "Return to Home",
 			error404:            "Error 404",
 			error404Message:     "Esa página ya no existe",
 			navigationItemAbout: "Sobre",
@@ -34,6 +37,7 @@ var (
 			app:                 "DummyAI",
 			appDescription:      "Artificial intelligence for dummies",
 			ariaLabelNavigation: "Navegação",
+			buttonReturnToHome:  "Return to Home",
 			error404:            "Erro 404",
 			error404Message:     "Essa página não existe mais",
 			navigationItemAbout: "Sobre",
@@ -56,6 +60,11 @@ func AppDescription() string {
 func AriaLabelNavigation() string {
 
 	return messages[ariaLabelNavigation]
+}
+
+func ButtonReturnToHome() string {
+
+	return messages[buttonReturnToHome]
 }
 
 func Error404() string {
