@@ -18,8 +18,13 @@ func init() {
 
 func main() {
 
+	cardBody := js.Global().Get("document").Call("createElement", "div")
+	cardBody.Set("className", "pf-v6-c-card__body")
+	cardBody.Set("innerText", util.Error404Message())
+
 	card := js.Global().Get("document").Call("createElement", "div")
 	card.Set("className", "pf-v6-c-card")
+	card.Call("appendChild", cardBody)
 
 	body := js.Global().Get("document").Get("body")
 	body.Call("appendChild", component.CreateApp(card))
