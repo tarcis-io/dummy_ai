@@ -44,3 +44,18 @@ func AppDescription() string {
 
 	return messages[appDescription]
 }
+
+func AriaLabelNavigation() string {
+
+	return messages[ariaLabelNavigation]
+}
+
+func NavigationItemAbout() string {
+
+	return messages[navigationItemAbout]
+}
+
+func NavigationItemHome() string {
+
+	return messages[navigationItemHome]
+}
