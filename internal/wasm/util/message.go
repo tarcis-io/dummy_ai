@@ -18,8 +18,8 @@ var (
 		Spanish: {
 			app:                 "DummyAI",
 			appDescription:      "Artificial intelligence for dummies",
-			navigationItemAbout: "About",
-			navigationItemHome:  "Home",
+			navigationItemAbout: "Sobre",
+			navigationItemHome:  "Inicio",
 		},
 		Portuguese: {
 			app:                 "DummyAI",
