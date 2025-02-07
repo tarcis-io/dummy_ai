@@ -30,7 +30,7 @@ func CreateMasthead() js.Value {
 	}))
 
 	mastheadToggle := js.Global().Get("document").Call("createElement", "span")
-	mastheadToggle.Set("className", "pf-v6-c-masthead__toggle")
+	mastheadToggle.Set("className", "pf-v6-c-masthead__toggle pf-v6-u-display-none-on-xl")
 	mastheadToggle.Call("appendChild", navigationButton)
 
 	img := js.Global().Get("document").Call("createElement", "img")
