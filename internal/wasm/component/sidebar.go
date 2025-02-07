@@ -13,11 +13,11 @@ func CreateSidebar() js.Value {
 	navigationItems := [][]string{
 		{
 			"/",
-			util.SidebarHomeNavigationItem(),
+			util.NavigationItemHome(),
 		},
 		{
 			"/about",
-			util.SidebarAboutNavigationItem(),
+			util.NavigationItemAbout(),
 		},
 	}
 
