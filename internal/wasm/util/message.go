@@ -26,7 +26,7 @@ var (
 			appDescription:      "Artificial intelligence for dummies",
 			ariaLabelNavigation: "Navegación",
 			error404:            "Error 404",
-			error404Message:     "",
+			error404Message:     "Esa página ya no existe",
 			navigationItemAbout: "Sobre",
 			navigationItemHome:  "Inicio",
 		},
