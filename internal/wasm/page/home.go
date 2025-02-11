@@ -16,4 +16,6 @@ func init() {
 }
 
 func main() {
+
+	select {}
 }
