@@ -40,7 +40,7 @@ func Start() {
 		"/wasm_exec.js":                 "./static/lib/wasm/wasm_exec.js",
 		"/wasm_start.js":                "./static/lib/wasm/wasm_start.js",
 		"/error_404.wasm":               "./static/wasm/error_404.wasm",
-		"/index.wasm":                   "./static/wasm/index.wasm",
+		"/home.wasm":                    "./static/wasm/home.wasm",
 	}
 
 	for route, staticFile := range staticFiles {
@@ -49,7 +49,7 @@ func Start() {
 	}
 
 	pages := map[string]string{
-		"/": "/index.wasm",
+		"/": "/hme.wasm",
 	}
 
 	for route, wasmRoute := range pages {
