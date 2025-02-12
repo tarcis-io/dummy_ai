@@ -9,13 +9,6 @@ import (
 	"dummy_ai/internal/wasm/util"
 )
 
-func init() {
-
-	html := js.Global().Get("document").Get("documentElement")
-	html.Set("className", "pf-v6-theme-dark")
-	html.Set("lang", util.Language())
-}
-
 func main() {
 
 	cardTitleText := js.Global().Get("document").Call("createElement", "h2")
@@ -49,8 +42,7 @@ func main() {
 	card.Call("appendChild", cardBody)
 	card.Call("appendChild", cardFooter)
 
-	body := js.Global().Get("document").Get("body")
-	body.Call("appendChild", component.CreateApp(card))
+	component.CreateApp(card)
 
 	select {}
 }
