@@ -4,7 +4,14 @@ import (
 	"syscall/js"
 )
 
-func CreateApp(pageContent js.Value) js.Value {
+import (
+	"dummy_ai/internal/wasm/util"
+)
+
+func CreateApp(pageContent js.Value) {
+
+	html := js.Global().Get("document").Get("documentElement")
+	html.Set("lang", util.Language())
 
 	pageMainBody := js.Global().Get("document").Call("createElement", "div")
 	pageMainBody.Set("className", "pf-v6-c-page__main-body")
@@ -31,5 +38,6 @@ func CreateApp(pageContent js.Value) js.Value {
 	page.Call("appendChild", CreateSidebar())
 	page.Call("appendChild", pageMainContainer)
 
-	return page
+	body := js.Global().Get("document").Get("body")
+	body.Call("appendChild", page)
 }
