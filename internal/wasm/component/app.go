@@ -11,6 +11,7 @@ import (
 func CreateApp(pageContent js.Value) {
 
 	html := js.Global().Get("document").Get("documentElement")
+	html.Set("className", "pf-v6-theme-dark")
 	html.Set("lang", util.Language())
 
 	pageMainBody := js.Global().Get("document").Call("createElement", "div")
