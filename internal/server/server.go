@@ -49,7 +49,7 @@ func Start() {
 	}
 
 	pages := map[string]string{
-		"/": "/hme.wasm",
+		"/": "/home.wasm",
 	}
 
 	for route, wasmRoute := range pages {
