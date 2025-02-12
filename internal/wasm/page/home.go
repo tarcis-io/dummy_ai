@@ -5,6 +5,7 @@ import (
 )
 
 import (
+	"dummy_ai/internal/wasm/component"
 	"dummy_ai/internal/wasm/util"
 )
 
@@ -16,6 +17,9 @@ func init() {
 }
 
 func main() {
+
+	body := js.Global().Get("document").Get("body")
+	body.Call("appendChild", component.CreateApp(component.CreateCamera()))
 
 	select {}
 }
