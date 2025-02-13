@@ -39,6 +39,7 @@ func Start() {
 		"/patternfly-addons.css":        "./static/lib/patternfly/patternfly-addons.css",
 		"/wasm_exec.js":                 "./static/lib/wasm/wasm_exec.js",
 		"/wasm_start.js":                "./static/lib/wasm/wasm_start.js",
+		"/about.wasm":                   "./static/wasm/about.wasm",
 		"/error_404.wasm":               "./static/wasm/error_404.wasm",
 		"/home.wasm":                    "./static/wasm/home.wasm",
 	}
@@ -49,7 +50,8 @@ func Start() {
 	}
 
 	pages := map[string]string{
-		"/": "/home.wasm",
+		"/":      "/home.wasm",
+		"/about": "/about.wasm",
 	}
 
 	for route, wasmRoute := range pages {
