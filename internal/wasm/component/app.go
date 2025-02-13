@@ -13,6 +13,9 @@ func CreateApp(pageContent js.Value) {
 	html := js.Global().Get("document").Get("documentElement")
 	html.Set("className", "pf-v6-theme-dark")
 	html.Set("lang", util.Language())
+	html.Get("style").Call("setProperty", "--pf-t--global--color--brand--default", "#EE0000")
+	html.Get("style").Call("setProperty", "--pf-t--global--color--brand--hover", "#A60000")
+	html.Get("style").Call("setProperty", "--pf-t--global--text--color--brand--default", "#EE0000")
 
 	pageMainBody := js.Global().Get("document").Call("createElement", "div")
 	pageMainBody.Set("className", "pf-v6-c-page__main-body")
