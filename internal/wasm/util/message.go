@@ -3,6 +3,8 @@ package util
 const (
 	app = iota
 	appDescription
+	appDevelopedBy
+	appVersion
 	ariaLabelNavigation
 	buttonReturnToHome
 	error404
@@ -16,6 +18,8 @@ var (
 		English: {
 			app:                 "DummyAI",
 			appDescription:      "Artificial intelligence for dummies",
+			appDevelopedBy:      "Developed by t@rcis.io",
+			appVersion:          "0.0.1",
 			ariaLabelNavigation: "Navigation",
 			buttonReturnToHome:  "Return to home",
 			error404:            "Error 404",
@@ -26,6 +30,8 @@ var (
 		Spanish: {
 			app:                 "DummyAI",
 			appDescription:      "Artificial intelligence for dummies",
+			appDevelopedBy:      "Developed by t@rcis.io",
+			appVersion:          "0.0.1",
 			ariaLabelNavigation: "Navegación",
 			buttonReturnToHome:  "Volver al inicio",
 			error404:            "Error 404",
@@ -36,6 +42,8 @@ var (
 		Portuguese: {
 			app:                 "DummyAI",
 			appDescription:      "Artificial intelligence for dummies",
+			appDevelopedBy:      "Developed by t@rcis.io",
+			appVersion:          "0.0.1",
 			ariaLabelNavigation: "Navegação",
 			buttonReturnToHome:  "Voltar para o início",
 			error404:            "Erro 404",
@@ -55,6 +63,16 @@ func App() string {
 func AppDescription() string {
 
 	return messages[appDescription]
+}
+
+func AppDevelopedBy() string {
+
+	return messages[appDevelopedBy]
+}
+
+func AppVersion() string {
+
+	return messages[appVersion]
 }
 
 func AriaLabelNavigation() string {
