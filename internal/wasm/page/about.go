@@ -15,7 +15,7 @@ func main() {
 	cardTitleText.Set("className", "pf-v6-c-card__title-text")
 	cardTitleText.Set("innerText", util.App())
 
-	cardTitle := js.Global().Get("document").Call("createElement", "title")
+	cardTitle := js.Global().Get("document").Call("createElement", "div")
 	cardTitle.Set("className", "pf-v6-c-card__title")
 	cardTitle.Call("appendChild", cardTitleText)
 
