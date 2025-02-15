@@ -23,15 +23,15 @@ func main() {
 	cardBodyAppDescription.Set("className", "pf-v6-c-card__body")
 	cardBodyAppDescription.Set("innerText", util.AppDescription())
 
-	cardBodyAppDevelopedBy := js.Global().Get("document").Call("createElement", "div")
-	cardBodyAppDevelopedBy.Set("className", "pf-v6-c-card__body")
-	cardBodyAppDevelopedBy.Set("innerText", util.AppDevelopedBy())
+	cardBodyAppVersion := js.Global().Get("document").Call("createElement", "div")
+	cardBodyAppVersion.Set("className", "pf-v6-c-card__body")
+	cardBodyAppVersion.Set("innerText", util.AppVersion())
 
 	card := js.Global().Get("document").Call("createElement", "div")
 	card.Set("className", "pf-v6-c-card")
 	card.Call("appendChild", cardTitle)
 	card.Call("appendChild", cardBodyAppDescription)
-	card.Call("appendChild", cardBodyAppDevelopedBy)
+	card.Call("appendChild", cardBodyAppVersion)
 
 	component.CreateApp(card)
 	select {}
