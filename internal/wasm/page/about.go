@@ -27,11 +27,16 @@ func main() {
 	cardBodyAppVersion.Set("className", "pf-v6-c-card__body")
 	cardBodyAppVersion.Set("innerText", util.AppVersion())
 
+	cardFooter := js.Global().Get("document").Call("createElement", "div")
+	cardFooter.Set("className", "pf-v6-c-card__footer")
+	cardFooter.Set("innerText", util.AppDevelopedBy())
+
 	card := js.Global().Get("document").Call("createElement", "div")
 	card.Set("className", "pf-v6-c-card")
 	card.Call("appendChild", cardTitle)
 	card.Call("appendChild", cardBodyAppDescription)
 	card.Call("appendChild", cardBodyAppVersion)
+	card.Call("appendChild", cardFooter)
 
 	component.CreateApp(card)
 	select {}
