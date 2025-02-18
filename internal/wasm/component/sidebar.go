@@ -12,15 +12,15 @@ func init() {
 
 	js.Global().Call("addEventListener", "resize", js.FuncOf(func(this js.Value, args []js.Value) any {
 
-		sidebar := js.Global().Get("document").Call("getElementById", "sidebar")
+		sidebarClassList := js.Global().Get("document").Call("getElementById", "sidebar").Get("classList")
 
 		if util.IsDesktop() {
 
-			sidebar.Get("classList").Call("add", "pf-m-expanded")
+			sidebarClassList.Call("add", "pf-m-expanded")
 			return nil
 		}
 
-		sidebar.Get("classList").Call("remove", "pf-m-expanded")
+		sidebarClassList.Call("remove", "pf-m-expanded")
 		return nil
 	}))
 }
@@ -94,6 +94,5 @@ func CreateSidebarNavigationItem(href string, text string) js.Value {
 
 func ToggleSidebar() {
 
-	sidebar := js.Global().Get("document").Call("getElementById", "sidebar")
-	sidebar.Get("classList").Call("toggle", "pf-m-expanded")
+	js.Global().Get("document").Call("getElementById", "sidebar").Get("classList").Call("toggle", "pf-m-expanded")
 }
