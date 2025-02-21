@@ -35,6 +35,11 @@ func CreateCameraError(title string, text string) js.Value {
 	button.Set("className", "pf-v6-c-button pf-m-primary")
 	button.Set("type", "button")
 	button.Call("appendChild", buttonText)
+	button.Call("addEventListener", "click", js.FuncOf(func(this js.Value, args []js.Value) any {
+
+		js.Global().Get("location").Call("reload")
+		return nil
+	}))
 
 	cardFooter := js.Global().Get("document").Call("createElement", "div")
 	cardFooter.Set("className", "pf-v6-c-card__footer")
