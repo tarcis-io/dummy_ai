@@ -7,5 +7,6 @@ import (
 func main() {
 
 	component.CreateApp(component.CreateCamera())
+
 	select {}
 }

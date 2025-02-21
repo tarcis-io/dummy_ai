@@ -39,5 +39,6 @@ func main() {
 	card.Call("appendChild", cardFooter)
 
 	component.CreateApp(card)
+
 	select {}
 }
