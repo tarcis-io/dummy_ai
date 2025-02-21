@@ -4,6 +4,10 @@ import (
 	"syscall/js"
 )
 
+import (
+	"dummy_ai/internal/wasm/util"
+)
+
 func CreateCamera() js.Value {
 
 	return CreateCameraError("Title", "Text")
@@ -25,7 +29,7 @@ func CreateCameraError(title string, text string) js.Value {
 
 	buttonText := js.Global().Get("document").Call("createElement", "span")
 	buttonText.Set("className", "pf-v6-c-button__text")
-	buttonText.Set("innerText", "Reload")
+	buttonText.Set("innerText", util.ButtonReloadPage())
 
 	button := js.Global().Get("document").Call("createElement", "button")
 	button.Set("className", "pf-v6-c-button pf-m-primary")
