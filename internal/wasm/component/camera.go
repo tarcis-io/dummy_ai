@@ -6,8 +6,13 @@ import (
 
 func CreateCamera() js.Value {
 
-	h2 := js.Global().Get("document").Call("createElement", "h2")
-	h2.Set("innerText", "Camera")
+	return CreateCameraError("Title", "Text")
+}
 
-	return h2
+func CreateCameraError(title string, text string) js.Value {
+
+	card := js.Global().Get("document").Call("createElement", "div")
+	card.Set("className", "pf-v6-c-card")
+
+	return card
 }
