@@ -19,9 +19,14 @@ func CreateCameraError(title string, text string) js.Value {
 	cardTitle.Set("className", "pf-v6-c-card__title")
 	cardTitle.Call("appendChild", cardTitleText)
 
+	cardBody := js.Global().Get("document").Call("createElement", "div")
+	cardBody.Set("className", "pf-v6-c-card__body")
+	cardBody.Set("innerText", text)
+
 	card := js.Global().Get("document").Call("createElement", "div")
 	card.Set("className", "pf-v6-c-card")
 	card.Call("appendChild", cardTitle)
+	card.Call("appendChild", cardBody)
 
 	return card
 }
