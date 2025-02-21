@@ -6,6 +6,7 @@ const (
 	appDevelopedBy
 	appVersion
 	ariaLabelNavigation
+	buttonReloadPage
 	buttonReturnToHome
 	error404
 	error404Message
@@ -21,6 +22,7 @@ var (
 			appDevelopedBy:      "Developed by t@rcis.io",
 			appVersion:          "Version 0.0.1",
 			ariaLabelNavigation: "Navigation",
+			buttonReloadPage:    "Reload page",
 			buttonReturnToHome:  "Return to home",
 			error404:            "Error 404",
 			error404Message:     "That page no longer exists",
@@ -33,6 +35,7 @@ var (
 			appDevelopedBy:      "Desarrollado por t@rcis.io",
 			appVersion:          "Versión 0.0.1",
 			ariaLabelNavigation: "Navegación",
+			buttonReloadPage:    "Recargar página",
 			buttonReturnToHome:  "Volver al inicio",
 			error404:            "Error 404",
 			error404Message:     "Esa página ya no existe",
@@ -45,6 +48,7 @@ var (
 			appDevelopedBy:      "Desenvolvido por t@rcis.io",
 			appVersion:          "Versão 0.0.1",
 			ariaLabelNavigation: "Navegação",
+			buttonReloadPage:    "Recarregar página",
 			buttonReturnToHome:  "Voltar para o início",
 			error404:            "Erro 404",
 			error404Message:     "Essa página não existe mais",
@@ -78,6 +82,11 @@ func AppVersion() string {
 func AriaLabelNavigation() string {
 
 	return messages[ariaLabelNavigation]
+}
+
+func ButtonReloadPage() string {
+
+	return messages[buttonReloadPage]
 }
 
 func ButtonReturnToHome() string {
