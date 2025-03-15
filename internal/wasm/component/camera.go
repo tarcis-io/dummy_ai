@@ -10,7 +10,10 @@ import (
 
 func CreateCamera() js.Value {
 
-	return CreateCameraError("Title", "Text")
+	h2 := js.Global().Get("document").Call("createElement", "h2")
+	h2.Set("innerText", "Camera")
+
+	return h2
 }
 
 func CreateCameraError(title string, text string) js.Value {
