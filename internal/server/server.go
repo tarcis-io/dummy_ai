@@ -18,6 +18,14 @@ func Start() {
 	listenAndServe()
 }
 
+func handleFile(route string, file string) {
+
+	http.HandleFunc(route, func(responseWriter http.ResponseWriter, request *http.Request) {
+
+		http.ServeFile(responseWriter, request, file)
+	})
+}
+
 func listenAndServe() {
 
 	if err := http.ListenAndServe(env.ServerAddress(), nil); err != nil {
