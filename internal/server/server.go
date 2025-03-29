@@ -15,6 +15,16 @@ var (
 
 func Start() {
 
+	staticFiles := map[string]string{
+		"/wasm_exec.js":  "./static/lib/wasm/wasm_exec.js",
+		"/wasm_start.js": "./static/lib/wasm/wasm_start.js",
+	}
+
+	for route, staticFile := range staticFiles {
+
+		handleFile(route, staticFile)
+	}
+
 	listenAndServe()
 }
 
