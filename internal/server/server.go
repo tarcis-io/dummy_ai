@@ -36,6 +36,14 @@ func handleFile(route string, file string) {
 	})
 }
 
+func executeServerTemplate(responseWriter http.ResponseWriter, wasmRoute string) {
+
+	if err := serverTemplate.Execute(responseWriter, wasmRoute); err != nil {
+
+		panic(err)
+	}
+}
+
 func listenAndServe() {
 
 	if err := http.ListenAndServe(env.ServerAddress(), nil); err != nil {
