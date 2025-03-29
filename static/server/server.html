@@ -5,6 +5,17 @@
 
 		<title>DummyAI</title>
 
+		<script src = "/wasm_exec.js"></script>
+		<script src = "/wasm_start.js"></script>
+
+		<script>
+
+			"use strict";
+
+			wasmStart("{{ . }}");
+
+		</script>
+
 	</head>
 
 	<body></body>
