@@ -18,6 +18,14 @@ func Start() {
 	listenAndServe()
 }
 
+func handleFile(route string, file string) {
+
+	http.HandleFunc(route, func(responseWriter http.ResponseWriter, request *http.Request) {
+
+		http.ServeFile(responseWriter, request, file)
+	})
+}
+
 func handlePage(route string, wasmRoute string) {
 
 	http.HandleFunc(route, func(responseWriter http.ResponseWriter, request *http.Request) {
