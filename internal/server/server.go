@@ -19,6 +19,8 @@ func Start() {
 		"/manifest.json": "./static/config/manifest.json",
 		"/robots.txt":    "./static/config/robots.txt",
 		"/sitemap.xml":   "./static/config/sitemap.xml",
+		"/wasm_exec.js":  "./static/lib/wasm/wasm_exec.js",
+		"/wasm_start.js": "./static/lib/wasm/wasm_start.js",
 	}
 
 	for route, staticFile := range staticFiles {
