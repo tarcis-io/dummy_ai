@@ -16,11 +16,14 @@ var (
 func Start() {
 
 	staticFiles := map[string]string{
-		"/manifest.json": "./static/config/manifest.json",
-		"/robots.txt":    "./static/config/robots.txt",
-		"/sitemap.xml":   "./static/config/sitemap.xml",
-		"/wasm_exec.js":  "./static/lib/wasm/wasm_exec.js",
-		"/wasm_start.js": "./static/lib/wasm/wasm_start.js",
+		"/manifest.json":  "./static/config/manifest.json",
+		"/robots.txt":     "./static/config/robots.txt",
+		"/sitemap.xml":    "./static/config/sitemap.xml",
+		"/wasm_exec.js":   "./static/lib/wasm/wasm_exec.js",
+		"/wasm_start.js":  "./static/lib/wasm/wasm_start.js",
+		"/about.wasm":     "./static/wasm/about.wasm",
+		"/error_404.wasm": "./static/wasm/error_404.wasm",
+		"/home.wasm":      "./static/wasm/home.wasm",
 	}
 
 	for route, staticFile := range staticFiles {
