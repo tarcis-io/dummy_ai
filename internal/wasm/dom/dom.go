@@ -5,5 +5,7 @@ import (
 )
 
 type (
-	DOM js.Value
+	DOM struct {
+		js.Value
+	}
 )
