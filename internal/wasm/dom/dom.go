@@ -6,6 +6,6 @@ import (
 
 type (
 	DOM struct {
-		js.Value
+		jsObject js.Value
 	}
 )
