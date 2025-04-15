@@ -10,7 +10,7 @@ type (
 	}
 )
 
-func Global() DOM {
+func GetGlobal() DOM {
 
 	return DOM{
 		jsObject: js.Global(),
