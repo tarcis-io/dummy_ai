@@ -9,3 +9,10 @@ type (
 		jsObject js.Value
 	}
 )
+
+func Global() DOM {
+
+	return DOM{
+		jsObject: js.Global(),
+	}
+}
