@@ -18,6 +18,8 @@ func (window Window) Document() Document {
 func GetWindow() Window {
 
 	return Window{
-		DOM: GetGlobal(),
+		DOM: DOM{
+			jsObject: GetGlobal(),
+		},
 	}
 }
