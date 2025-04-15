@@ -5,3 +5,10 @@ type (
 		DOM
 	}
 )
+
+func GetWindow() Window {
+
+	return Window{
+		DOM: GetGlobal(),
+	}
+}
