@@ -8,7 +8,5 @@ type (
 
 func (document Document) CreateElement(element string) DOM {
 
-	return DOM{
-		jsObject: document.jsObject.Call("createElement", element),
-	}
+	return document.Call("createElement", element)
 }
