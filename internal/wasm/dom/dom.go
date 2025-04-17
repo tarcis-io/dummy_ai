@@ -22,16 +22,9 @@ func (dom DOM) Set(property string, value any) {
 	dom.jsObject.Set(property, value)
 }
 
-func (dom DOM) Call(method string, args ...any) DOM {
+func (dom DOM) Call(method string, arguments ...any) DOM {
 
 	return DOM{
-		jsObject: dom.jsObject.Call(method, args...),
-	}
-}
-
-func GetGlobal() DOM {
-
-	return DOM{
-		jsObject: js.Global(),
+		jsObject: dom.jsObject.Call(method, arguments...),
 	}
 }
