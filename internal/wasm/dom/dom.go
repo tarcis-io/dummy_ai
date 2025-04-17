@@ -29,7 +29,9 @@ func (dom DOM) Call(method string, args ...any) DOM {
 	}
 }
 
-func GetGlobal() js.Value {
+func GetGlobal() DOM {
 
-	return js.Global()
+	return DOM{
+		jsObject: js.Global(),
+	}
 }
