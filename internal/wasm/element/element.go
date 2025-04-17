@@ -22,3 +22,9 @@ func (element Element) Id(id string) Element {
 	element.domObject.Set("id", id)
 	return element
 }
+
+func (element Element) Class(class string) Element {
+
+	element.domObject.Set("className", class)
+	return element
+}
