@@ -28,3 +28,10 @@ func (dom DOM) Call(method string, arguments ...any) DOM {
 		jsObject: dom.jsObject.Call(method, arguments...),
 	}
 }
+
+func GetGlobal() DOM {
+
+	return DOM{
+		jsObject: js.Global(),
+	}
+}
