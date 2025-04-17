@@ -16,3 +16,9 @@ func Create(element string) Element {
 		domObject: dom.GetWindow().Document().CreateElement(element),
 	}
 }
+
+func (element Element) Id(id string) Element {
+
+	element.domObject.Set("id", id)
+	return element
+}
