@@ -10,10 +10,28 @@ import (
 )
 
 var (
+	staticFiles = map[string]string{}
+)
+
+var (
+	pages = map[string]string{}
+)
+
+var (
 	serverTemplate = template.Must(template.ParseFiles("./static/server/server.html"))
 )
 
 func Start() {
+
+	for route, staticFile := range staticFiles {
+
+		handleFile(route, staticFile)
+	}
+
+	for route, page := range pages {
+
+		handlePage(route, page)
+	}
 
 	listenAndServe()
 }
