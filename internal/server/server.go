@@ -41,7 +41,10 @@ var (
 )
 
 var (
-	pages = map[string]string{}
+	pages = map[string]string{
+		"/":      "/home.wasm",
+		"/about": "/about.wasm",
+	}
 )
 
 var (
