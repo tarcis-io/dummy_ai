@@ -34,6 +34,9 @@ var (
 		"/patternfly_addons.css":           "./static/lib/patternfly/patternfly_addons.css",
 		"/wasm_exec.js":                    "./static/lib/wasm/wasm_exec.js",
 		"/wasm_start.js":                   "./static/lib/wasm/wasm_start.js",
+		"/about.wasm":                      "./static/wasm/about.wasm",
+		"/error_404.wasm":                  "./static/wasm/error_404.wasm",
+		"/home.wasm":                       "./static/wasm/home.wasm",
 	}
 )
 
