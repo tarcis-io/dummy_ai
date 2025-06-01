@@ -10,7 +10,11 @@ import (
 )
 
 var (
-	staticFiles = map[string]string{}
+	staticFiles = map[string]string{
+		"/manifest.json": "./static/config/manifest.json",
+		"/robots.txt":    "./static/config/robots.txt",
+		"/sitemap.xml":   "./static/config/sitemap.xml",
+	}
 )
 
 var (
