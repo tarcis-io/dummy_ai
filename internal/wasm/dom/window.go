@@ -9,6 +9,6 @@ type (
 func GetWindow() Window {
 
 	return Window{
-		GetGlobal(),
+		DOM: GetGlobal(),
 	}
 }
