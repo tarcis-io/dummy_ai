@@ -5,3 +5,8 @@ type (
 		DOM
 	}
 )
+
+func GetDocument() Document {
+
+	return GetWindow().Document()
+}
