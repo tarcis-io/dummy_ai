@@ -10,6 +10,13 @@ type (
 	}
 )
 
+func (dom DOM) Get(property string) DOM {
+
+	return DOM{
+		jsObject: dom.jsObject.Get(property),
+	}
+}
+
 func GetGlobal() DOM {
 
 	return DOM{
