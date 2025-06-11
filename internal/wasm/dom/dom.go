@@ -17,6 +17,11 @@ func (dom DOM) Get(property string) DOM {
 	}
 }
 
+func (dom DOM) Set(property string, value any) {
+
+	dom.jsObject.Set(property, value)
+}
+
 func GetGlobal() DOM {
 
 	return DOM{
