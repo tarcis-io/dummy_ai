@@ -6,6 +6,13 @@ type (
 	}
 )
 
+func (window Window) Document() Document {
+
+	return Document{
+		DOM: window.Get("document"),
+	}
+}
+
 func GetWindow() Window {
 
 	return Window{
