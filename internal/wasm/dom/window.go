@@ -2,13 +2,13 @@ package dom
 
 type (
 	Window struct {
-		dom DOM
+		DOM
 	}
 )
 
 func GetWindow() Window {
 
 	return Window{
-		dom: GetGlobal(),
+		GetGlobal(),
 	}
 }
