@@ -10,6 +10,26 @@ type (
 	}
 )
 
+func (dom DOM) Bool() bool {
+
+	return dom.jsObject.Bool()
+}
+
+func (dom DOM) String() string {
+
+	return dom.jsObject.String()
+}
+
+func (dom DOM) Int() int {
+
+	return dom.jsObject.Int()
+}
+
+func (dom DOM) Float() float64 {
+
+	return dom.jsObject.Float()
+}
+
 func (dom DOM) Get(property string) DOM {
 
 	return DOM{
