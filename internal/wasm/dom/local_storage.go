@@ -5,3 +5,8 @@ type (
 		DOM
 	}
 )
+
+func GetLocalStorage() LocalStorage {
+
+	return GetWindow().LocalStorage()
+}
