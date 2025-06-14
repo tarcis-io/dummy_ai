@@ -30,6 +30,11 @@ func (dom DOM) Float() float64 {
 	return dom.jsObject.Float()
 }
 
+func (dom DOM) Truthy() bool {
+
+	return dom.jsObject.Truthy()
+}
+
 func (dom DOM) Get(property string) DOM {
 
 	return DOM{
