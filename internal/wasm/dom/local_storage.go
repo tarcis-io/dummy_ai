@@ -11,9 +11,14 @@ func (localStorage LocalStorage) SetItem(key string, value string) {
 	localStorage.Call("setItem", key, value)
 }
 
-func (localStorage LocalStorage) GetItem(key string) string {
+func (localStorage LocalStorage) GetItem(key string) (string, bool) {
 
-	return localStorage.Call("getItem", key).String()
+	if value := localStorage.Call("getItem", key); value.Truthy() {
+
+		return value.String(), true
+	}
+
+	return "", false
 }
 
 func GetLocalStorage() LocalStorage {
