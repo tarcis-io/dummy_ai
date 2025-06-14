@@ -5,3 +5,8 @@ type (
 		DOM
 	}
 )
+
+func GetNavigator() Navigator {
+
+	return GetWindow().Navigator()
+}
