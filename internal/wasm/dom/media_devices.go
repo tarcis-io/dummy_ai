@@ -5,3 +5,8 @@ type (
 		DOM
 	}
 )
+
+func GetMediaDevices() MediaDevices {
+
+	return GetNavigator().MediaDevices()
+}
