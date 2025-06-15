@@ -54,6 +54,15 @@ func (dom DOM) Call(method string, arguments ...any) DOM {
 	}
 }
 
+func (dom DOM) AddEventListener(event string, listener func()) {
+
+	dom.Call("addEventListener", event, js.FuncOf(func(this js.Value, arguments []js.Value) any {
+
+		listener()
+		return nil
+	}))
+}
+
 func GetGlobal() DOM {
 
 	return DOM{
