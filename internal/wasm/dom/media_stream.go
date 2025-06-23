@@ -8,7 +8,7 @@ type (
 
 func GetUserMedia(constraints map[string]any) (MediaStream, error) {
 
-	value, err := GetMediaDevices().Call("getUserMedia").Await()
+	value, err := GetMediaDevices().Call("getUserMedia", constraints).Await()
 
 	if err != nil {
 
