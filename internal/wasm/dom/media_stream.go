@@ -8,16 +8,5 @@ type (
 
 func GetUserMedia(constraints map[string]any) (MediaStream, error) {
 
-	value, err := GetMediaDevices().Call("getUserMedia", constraints).Await()
-
-	if err != nil {
-
-		return MediaStream{}, err
-	}
-
-	mediaStream := MediaStream{
-		DOM: value,
-	}
-
-	return mediaStream, nil
+	return GetMediaDevices().GetUserMedia(constraints)
 }
