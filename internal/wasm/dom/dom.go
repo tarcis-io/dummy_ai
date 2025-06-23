@@ -57,12 +57,12 @@ func (dom DOM) Call(method string, arguments ...any) DOM {
 
 func (dom DOM) Await() (DOM, error) {
 
-	result := make(chan DOM)
-	defer close(result)
+	value := make(chan DOM)
+	defer close(value)
 
 	onResolve := js.FuncOf(func(this js.Value, arguments []js.Value) any {
 
-		result <- DOM{
+		value <- DOM{
 			jsObject: arguments[0],
 		}
 
@@ -84,9 +84,9 @@ func (dom DOM) Await() (DOM, error) {
 
 	select {
 
-	case result := <-result:
+	case value := <-value:
 
-		return result, nil
+		return value, nil
 
 	case err := <-err:
 
