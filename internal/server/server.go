@@ -1,4 +1,13 @@
 package server
 
-func Start() {
+type (
+	Server struct{}
+)
+
+func (server Server) ListenAndServe() {
+}
+
+func New() Server {
+
+	return Server{}
 }
