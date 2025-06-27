@@ -6,5 +6,5 @@ import (
 
 func main() {
 
-	server.New().ListenAndServe()
+	server.ListenAndServe()
 }
