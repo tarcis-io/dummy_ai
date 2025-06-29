@@ -10,6 +10,19 @@ import (
 )
 
 var (
+	staticFiles = map[string]string{
+		"/manifest.json": "./static/config/manifest.json",
+	}
+)
+
+var (
+	pages = map[string]string{
+		"/":      "/home.wasm",
+		"/about": "/about.wasm",
+	}
+)
+
+var (
 	serverTemplate = template.Must(template.ParseFiles("./static/server/server.html"))
 )
 
