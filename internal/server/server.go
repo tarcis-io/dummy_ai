@@ -28,6 +28,16 @@ var (
 
 func ListenAndServe() {
 
+	for route, file := range staticFiles {
+
+		serveFile(route, file)
+	}
+
+	for route, wasmRoute := range pages {
+
+		servePage(route, wasmRoute)
+	}
+
 	listenAndServe()
 }
 
