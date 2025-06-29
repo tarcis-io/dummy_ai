@@ -30,6 +30,10 @@ var (
 		"/red_hat_mono_vf_italic.woff2":    "./static/lib/patternfly/font/red_hat_mono_vf_italic.woff2",
 		"/red_hat_text_vf.woff2":           "./static/lib/patternfly/font/red_hat_text_vf.woff2",
 		"/red_hat_text_vf_italic.woff2":    "./static/lib/patternfly/font/red_hat_text_vf_italic.woff2",
+		"/patternfly.css":                  "./static/lib/patternfly/patternfly.css",
+		"/patternfly_addons.css":           "./static/lib/patternfly/patternfly_addons.css",
+		"/wasm_exec.js":                    "./static/lib/wasm/wasm_exec.js",
+		"/wasm_start.js":                   "./static/lib/wasm/wasm_start.js",
 	}
 )
 
