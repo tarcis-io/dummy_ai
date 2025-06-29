@@ -19,7 +19,7 @@ var (
 		"/favicon.svg":                     "./static/img/favicon/favicon.svg",
 		"/favicon_192.png":                 "./static/img/favicon/favicon_192.png",
 		"/favicon_512.png":                 "./static/img/favicon/favicon_512.png",
-		"/favicon_512_maskable":            "./static/img/favicon/favicon_512_maskable.png",
+		"/favicon_512_maskable.png":        "./static/img/favicon/favicon_512_maskable.png",
 		"/logo.svg":                        "./static/img/logo/logo.svg",
 		"/logo_white.svg":                  "./static/img/logo/logo_white.svg",
 		"/fa_solid_900.woff2":              "./static/lib/patternfly/font/fa_solid_900.woff2",
@@ -34,6 +34,9 @@ var (
 		"/patternfly_addons.css":           "./static/lib/patternfly/patternfly_addons.css",
 		"/wasm_exec.js":                    "./static/lib/wasm/wasm_exec.js",
 		"/wasm_start.js":                   "./static/lib/wasm/wasm_start.js",
+		"/about.wasm":                      "./static/wasm/about.wasm",
+		"/error_404.wasm":                  "./static/wasm/error_404.wasm",
+		"/home.wasm":                       "./static/wasm/home.wasm",
 	}
 )
 
