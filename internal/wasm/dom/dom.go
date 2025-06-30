@@ -50,6 +50,17 @@ func (dom DOM) Set(property string, value any) {
 
 func (dom DOM) Call(method string, arguments ...any) DOM {
 
+	for index, argument := range arguments {
+
+		switch argument := argument.(type) {
+
+		case DOM:
+
+			arguments[index] = argument.jsObject
+
+		}
+	}
+
 	return DOM{
 		jsObject: dom.jsObject.Call(method, arguments...),
 	}
