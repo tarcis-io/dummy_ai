@@ -27,11 +27,6 @@ func (window Window) Navigator() Navigator {
 	}
 }
 
-func (window Window) OnLoad(listener func()) {
-
-	window.AddEventListener("load", listener)
-}
-
 func GetWindow() Window {
 
 	return Window{
