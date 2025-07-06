@@ -9,6 +9,7 @@ import (
 var (
 	staticFiles = map[string]string{
 		"/favicon_192.png": "./static/image/favicon/favicon_192.png",
+		"/favicon_512.png": "./static/image/favicon/favicon_512.png",
 		"/favicon.ico":     "./static/image/favicon/favicon.ico",
 		"/favicon.svg":     "./static/image/favicon/favicon.svg",
 	}
