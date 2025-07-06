@@ -20,6 +20,8 @@ var (
 		"/favicon.svg":              "./static/image/favicon/favicon.svg",
 		"/logo_white.svg":           "./static/image/logo/logo_white.svg",
 		"/logo.svg":                 "./static/image/logo/logo.svg",
+		"/wasm_exec.js":             "./static/library/wasm/wasm_exec.js",
+		"/wasm_run.js":              "./static/library/wasm/wasm_run.js",
 	}
 )
 
