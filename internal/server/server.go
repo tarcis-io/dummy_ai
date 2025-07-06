@@ -8,6 +8,7 @@ import (
 
 var (
 	staticFiles = map[string]string{
+		"/favicon.ico": "./static/image/favicon/favicon.ico",
 		"/favicon.svg": "./static/image/favicon/favicon.svg",
 	}
 )
