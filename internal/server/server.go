@@ -8,6 +8,9 @@ import (
 
 var (
 	staticFiles = map[string]string{
+		"/manifest.json":            "./static/configuration/manifest.json",
+		"/robots.txt":               "./static/configuration/robots.txt",
+		"/sitemap.xml":              "./static/configuration/sitemap.xml",
 		"/apple_touch_icon.png":     "./static/image/favicon/apple_touch_icon.png",
 		"/favicon_192.png":          "./static/image/favicon/favicon_192.png",
 		"/favicon_512_maskable.png": "./static/image/favicon/favicon_512_maskable.png",
