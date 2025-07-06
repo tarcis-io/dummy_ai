@@ -7,7 +7,9 @@ import (
 )
 
 var (
-	staticFiles = map[string]string{}
+	staticFiles = map[string]string{
+		"/favicon.svg": "./static/image/favicon/favicon.svg",
+	}
 )
 
 func ListenAndServe() {
