@@ -14,6 +14,8 @@ var (
 		"/favicon_512.png":          "./static/image/favicon/favicon_512.png",
 		"/favicon.ico":              "./static/image/favicon/favicon.ico",
 		"/favicon.svg":              "./static/image/favicon/favicon.svg",
+		"/logo_white.svg":           "./static/image/logo/logo_white.svg",
+		"/logo.svg":                 "./static/image/logo/logo.svg",
 	}
 )
 
