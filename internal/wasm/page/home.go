@@ -9,6 +9,5 @@ func main() {
 	h2.Set("innerText", "Hello World, DummyAI!")
 
 	body := js.Global().Get("document").Get("body")
-	body.Set("className", "cds-theme-zone-g100")
 	body.Call("appendChild", h2)
 }
