@@ -24,11 +24,14 @@ var (
 		"/carbon.js":                "./static/library/carbon/carbon.js",
 		"/wasm_exec.js":             "./static/library/wasm/wasm_exec.js",
 		"/wasm_run.js":              "./static/library/wasm/wasm_run.js",
+		"/home.wasm":                "./static/wasm/home.wasm",
 	}
 )
 
 var (
-	pages = map[string]string{}
+	pages = map[string]string{
+		"/": "/home.wasm",
+	}
 )
 
 var (
