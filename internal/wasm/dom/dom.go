@@ -43,6 +43,15 @@ func (dom DOM) Set(property string, value any) {
 	dom.jsObject.Set(property, value)
 }
 
+func (dom DOM) Call(method string, arguments ...any) {
+	for index, argument := range arguments {
+		if domObject, ok := argument.(DOM); ok {
+			arguments[index] = domObject.jsObject
+		}
+	}
+	dom.jsObject.Call(method, arguments...)
+}
+
 func GetGlobal() DOM {
 	return DOM{
 		jsObject: js.Global(),
