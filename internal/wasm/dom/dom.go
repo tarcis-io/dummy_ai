@@ -36,6 +36,13 @@ func (dom DOM) Get(property string) DOM {
 	}
 }
 
+func (dom DOM) Set(property string, value any) {
+	if domObject, ok := value.(DOM); ok {
+		value = domObject.jsObject
+	}
+	dom.jsObject.Set(property, value)
+}
+
 func GetGlobal() DOM {
 	return DOM{
 		jsObject: js.Global(),
