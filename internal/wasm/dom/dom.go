@@ -51,3 +51,17 @@ func GetGlobal() DOM {
 		jsObject: js.Global(),
 	}
 }
+
+func unwrap(value any) any {
+	if domObject, ok := value.(DOM); ok {
+		return domObject.jsObject
+	}
+	return value
+}
+
+func unwrapSlice(values []any) []any {
+	for index, value := range values {
+		values[index] = unwrap(value)
+	}
+	return values
+}
