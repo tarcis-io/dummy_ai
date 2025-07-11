@@ -37,12 +37,12 @@ func (dom DOM) Get(property string) DOM {
 }
 
 func (dom DOM) Set(property string, value any) {
-	dom.jsObject.Set(property, value)
+	dom.jsObject.Set(property, unwrapValue(value))
 }
 
 func (dom DOM) Call(method string, arguments ...any) DOM {
 	return DOM{
-		jsObject: dom.jsObject.Call(method, arguments),
+		jsObject: dom.jsObject.Call(method, unwrapValues(arguments)...),
 	}
 }
 
@@ -50,4 +50,21 @@ func GetGlobal() DOM {
 	return DOM{
 		jsObject: js.Global(),
 	}
+}
+
+func unwrapValue(value any) any {
+	switch value := value.(type) {
+	case DOM:
+		return value.jsObject
+	default:
+		return value
+	}
+}
+
+func unwrapValues(values []any) []any {
+	unwrappedValues := make([]any, len(values))
+	for index, value := range values {
+		unwrappedValues[index] = unwrapValue(value)
+	}
+	return unwrappedValues
 }
