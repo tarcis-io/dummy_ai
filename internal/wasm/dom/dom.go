@@ -37,20 +37,12 @@ func (dom DOM) Get(property string) DOM {
 }
 
 func (dom DOM) Set(property string, value any) {
-	if domObject, ok := value.(DOM); ok {
-		value = domObject.jsObject
-	}
-	dom.jsObject.Set(property, value)
+	dom.jsObject.Set(property, unwrap(value))
 }
 
 func (dom DOM) Call(method string, arguments ...any) DOM {
-	for index, argument := range arguments {
-		if domObject, ok := argument.(DOM); ok {
-			arguments[index] = domObject.jsObject
-		}
-	}
 	return DOM{
-		jsObject: dom.jsObject.Call(method, arguments...),
+		jsObject: dom.jsObject.Call(method, unwrapSlice(arguments)...),
 	}
 }
 
