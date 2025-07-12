@@ -12,6 +12,12 @@ func (window Window) Document() Document {
 	}
 }
 
+func (window Window) LocalStorage() LocalStorage {
+	return LocalStorage{
+		DOM: window.Get("localStorage"),
+	}
+}
+
 func GetWindow() Window {
 	return Window{
 		DOM: GetGlobal(),
