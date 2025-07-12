@@ -53,12 +53,10 @@ func GetGlobal() DOM {
 }
 
 func unwrapValue(value any) any {
-	switch value := value.(type) {
-	case DOM:
-		return value.jsObject
-	default:
-		return value
+	if domObject, ok := value.(DOM); ok {
+		return domObject.jsObject
 	}
+	return value
 }
 
 func unwrapValues(values []any) []any {
