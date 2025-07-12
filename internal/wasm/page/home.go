@@ -1,13 +1,13 @@
 package main
 
 import (
-	"syscall/js"
+	"dummy_ai/internal/wasm/dom"
 )
 
 func main() {
-	h2 := js.Global().Get("document").Call("createElement", "h2")
+	h2 := dom.GetDocument().CreateElement("h2")
 	h2.Set("innerText", "Hello World, DummyAI!")
 
-	body := js.Global().Get("document").Get("body")
+	body := dom.GetDocument().Get("body")
 	body.Call("appendChild", h2)
 }
