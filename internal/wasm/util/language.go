@@ -14,3 +14,18 @@ func (language Language) Code() string {
 func (language Language) Name() string {
 	return language.name
 }
+
+var (
+	english = Language{
+		code: "en",
+		name: "English",
+	}
+	spanish = Language{
+		code: "es",
+		name: "Español",
+	}
+	portuguese = Language{
+		code: "pt",
+		name: "Português",
+	}
+)
