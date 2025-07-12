@@ -5,8 +5,13 @@ import (
 )
 
 var (
+	language      = env("LANGUAGE", "en")
 	serverAddress = env("SERVER_ADDRESS", ":8080")
 )
+
+func Language() string {
+	return language
+}
 
 func ServerAddress() string {
 	return serverAddress
