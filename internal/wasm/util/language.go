@@ -53,3 +53,12 @@ func Portuguese() Language {
 func Languages() []Language {
 	return languages
 }
+
+func LookupLanguage(code string) (Language, bool) {
+	for _, language := range languages {
+		if language.code == code {
+			return language, true
+		}
+	}
+	return Language{}, false
+}
