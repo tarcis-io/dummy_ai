@@ -1,5 +1,9 @@
 package util
 
+import (
+	"dummy_ai/internal/wasm/dom"
+)
+
 type (
 	Language struct {
 		code string
@@ -52,6 +56,10 @@ func Portuguese() Language {
 
 func Languages() []Language {
 	return languages
+}
+
+func SetLanguage(language Language) {
+	dom.GetLocalStorage().SetItem("language", language.code)
 }
 
 func LookupLanguage(code string) (Language, bool) {
