@@ -30,6 +30,14 @@ var (
 	}
 )
 
+var (
+	languages = []Language{
+		english,
+		spanish,
+		portuguese,
+	}
+)
+
 func English() Language {
 	return english
 }
@@ -40,4 +48,8 @@ func Spanish() Language {
 
 func Portuguese() Language {
 	return portuguese
+}
+
+func Languages() []Language {
+	return languages
 }
