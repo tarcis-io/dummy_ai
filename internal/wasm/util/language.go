@@ -1,6 +1,7 @@
 package util
 
 import (
+	"dummy_ai/internal/env"
 	"dummy_ai/internal/wasm/dom"
 )
 
@@ -56,6 +57,13 @@ func Portuguese() Language {
 
 func Languages() []Language {
 	return languages
+}
+
+func GetLanguage() Language {
+	if language, found := LookupLanguage(env.Language()); found {
+		return language
+	}
+	return english
 }
 
 func SetLanguage(language Language) {
