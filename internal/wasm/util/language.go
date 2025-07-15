@@ -68,7 +68,7 @@ func GetLanguage() Language {
 			return language
 		}
 	}
-	if language, found := LookupLanguage(env.Language()); found {
+	if language, found := lookupEnvironmentLanguage(); found {
 		return language
 	}
 	return english
@@ -85,4 +85,8 @@ func LookupLanguage(code string) (Language, bool) {
 		}
 	}
 	return Language{}, false
+}
+
+func lookupEnvironmentLanguage() (Language, bool) {
+	return LookupLanguage(env.Language())
 }
