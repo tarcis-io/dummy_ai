@@ -60,6 +60,9 @@ func Languages() []Language {
 }
 
 func GetLanguage() Language {
+	if language, found := lookupStorageLanguage(); found {
+		return language
+	}
 	if language, found := lookupNavigatorLanguage(); found {
 		return language
 	}
@@ -78,6 +81,13 @@ func LookupLanguage(code string) (Language, bool) {
 		if language.code == code {
 			return language, true
 		}
+	}
+	return Language{}, false
+}
+
+func lookupStorageLanguage() (Language, bool) {
+	if language, found := dom.GetLocalStorage().GetItem("language"); found {
+		return LookupLanguage(language)
 	}
 	return Language{}, false
 }
