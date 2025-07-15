@@ -60,6 +60,14 @@ func Languages() []Language {
 }
 
 func GetLanguage() Language {
+	if language, found := dom.GetNavigator().Language(); found {
+		if len(language) > 2 {
+			language = language[:2]
+		}
+		if language, found := LookupLanguage(language); found {
+			return language
+		}
+	}
 	if language, found := LookupLanguage(env.Language()); found {
 		return language
 	}
