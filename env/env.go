@@ -39,9 +39,9 @@ var (
 // 1. The current configuration.
 func init() {
 	currentConfig = &Config{
-		languageCode:  LookupEnv("LANGUAGE_CODE", "en"),
-		serverAddress: LookupEnv("SERVER_ADDRESS", ":8080"),
-		themeCode:     LookupEnv("THEME_CODE", "dark"),
+		languageCode:  lookupEnv("LANGUAGE_CODE", "en"),
+		serverAddress: lookupEnv("SERVER_ADDRESS", ":8080"),
+		themeCode:     lookupEnv("THEME_CODE", "dark"),
 	}
 }
 
@@ -50,24 +50,9 @@ func CurrentConfig() *Config {
 	return currentConfig
 }
 
-// LanguageCode returns the language code for the application.
-func LanguageCode() string {
-	return currentConfig.languageCode
-}
-
-// ServerAddress returns the server address for the application.
-func ServerAddress() string {
-	return currentConfig.serverAddress
-}
-
-// ThemeCode returns the theme code for the application.
-func ThemeCode() string {
-	return currentConfig.themeCode
-}
-
-// LookupEnv retrieves the value of the environment variable named by the key
+// lookupEnv retrieves the value of the environment variable named by the key
 // or the default value if the variable is not present.
-func LookupEnv(key, defaultValue string) string {
+func lookupEnv(key, defaultValue string) string {
 	v, ok := os.LookupEnv(key)
 	if ok {
 		return v
