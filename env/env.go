@@ -18,9 +18,6 @@ func (c *Config) ServerAddress() string {
 }
 
 var (
-	serverAddressKey     = "SERVER_ADDRESS"
-	defaultServerAddress = ":8080"
-
 	appConfig *Config
 
 	appConfigOnce sync.Once
@@ -36,7 +33,7 @@ func AppConfig() *Config {
 }
 
 func lookupServerAddressEnv() string {
-	v := lookupEnv(serverAddressKey, defaultServerAddress)
+	v := lookupEnv("SERVER_ADDRESS", ":8080")
 	_, _, err := net.SplitHostPort(v)
 	if err != nil {
 		panic(fmt.Errorf("[error] Failed to lookup server address: %s", err))
