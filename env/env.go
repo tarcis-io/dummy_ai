@@ -3,6 +3,7 @@ package env
 
 import (
 	"os"
+	"sync"
 )
 
 type (
@@ -32,21 +33,21 @@ func (c *Config) ThemeCode() string {
 var (
 	// currentConfig holds the current configuration settings for the application.
 	currentConfig *Config
-)
 
-// init runs on startup.
-// It configures the package's initial state.
-// 1. The current configuration.
-func init() {
-	currentConfig = &Config{
-		languageCode:  lookupEnv("LANGUAGE_CODE", "en"),
-		serverAddress: lookupEnv("SERVER_ADDRESS", ":8080"),
-		themeCode:     lookupEnv("THEME_CODE", "dark"),
-	}
-}
+	// currentConfigOnce is used to ensure that the current configuration settings
+	// are only initialized once.
+	currentConfigOnce sync.Once
+)
 
 // CurrentConfig returns the current configuration settings for the application.
 func CurrentConfig() *Config {
+	currentConfigOnce.Do(func() {
+		currentConfig = &Config{
+			languageCode:  lookupEnv("LANGUAGE_CODE", "en"),
+			serverAddress: lookupEnv("SERVER_ADDRESS", ":8080"),
+			themeCode:     lookupEnv("THEME_CODE", "dark"),
+		}
+	})
 	return currentConfig
 }
 
