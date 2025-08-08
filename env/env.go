@@ -40,19 +40,19 @@ func AppConfig() *Config {
 
 // lookupServerAddressEnv looks up the server address environment variable.
 func lookupServerAddressEnv() string {
-	v := lookupEnv("SERVER_ADDRESS", ":8080")
-	_, _, err := net.SplitHostPort(v)
+	serverAddress := lookupEnv("SERVER_ADDRESS", ":8080")
+	_, _, err := net.SplitHostPort(serverAddress)
 	if err != nil {
 		panic(fmt.Errorf("[error] Failed to lookup server address: %s", err))
 	}
-	return v
+	return serverAddress
 }
 
 // lookupEnv looks up an environment variable.
 func lookupEnv(key, defaultValue string) string {
-	v, ok := os.LookupEnv(key)
+	value, ok := os.LookupEnv(key)
 	if ok {
-		return v
+		return value
 	}
 	return defaultValue
 }
