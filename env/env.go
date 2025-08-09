@@ -1,7 +1,7 @@
 package env
 
 import (
-	"fmt"
+	"log"
 	"net"
 	"os"
 	"sync"
@@ -10,14 +10,14 @@ import (
 type (
 	// Config represents the application configuration.
 	Config struct {
-		serverAddress string
+		ServerAddress string
 	}
 )
 
-// ServerAddress returns the server address configuration.
-func (c *Config) ServerAddress() string {
-	return c.serverAddress
-}
+const (
+	serverAddressKey          = "SERVER_ADDRESS"
+	serverAddressDefaultValue = ":8080"
+)
 
 var (
 	// appConfig holds the application configuration.
@@ -32,7 +32,7 @@ var (
 func AppConfig() *Config {
 	appConfigOnce.Do(func() {
 		appConfig = &Config{
-			serverAddress: lookupServerAddressEnv(),
+			ServerAddress: lookupServerAddressEnv(),
 		}
 	})
 	return appConfig
@@ -40,10 +40,11 @@ func AppConfig() *Config {
 
 // lookupServerAddressEnv looks up the server address environment variable.
 func lookupServerAddressEnv() string {
-	serverAddress := lookupEnv("SERVER_ADDRESS", ":8080")
+	serverAddress := lookupEnv(serverAddressKey, serverAddressDefaultValue)
 	_, _, err := net.SplitHostPort(serverAddress)
 	if err != nil {
-		panic(fmt.Errorf("[error] Failed to lookup server address: %s", err))
+		log.Printf("[warn] Invalid value for %s %q: %v. Using default value %q.", serverAddressKey, serverAddress, err, serverAddressDefaultValue)
+		return serverAddressDefaultValue
 	}
 	return serverAddress
 }
