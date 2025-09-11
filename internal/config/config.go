@@ -6,10 +6,27 @@ import (
 	"os"
 )
 
+type (
+	Config struct {
+		ServerAddress string
+	}
+)
+
 const (
 	serverAddressEnvKey     = "SERVER_ADDRESS"
 	serverAddressEnvDefault = "0.0.0.0:8080"
 )
+
+func New() (*Config, error) {
+	serverAddress, err := resolveServerAddress()
+	if err != nil {
+		return nil, err
+	}
+	config := &Config{
+		ServerAddress: serverAddress,
+	}
+	return config, nil
+}
 
 func resolveServerAddress() (string, error) {
 	serverAddress := getEnv(serverAddressEnvKey, serverAddressEnvDefault)
