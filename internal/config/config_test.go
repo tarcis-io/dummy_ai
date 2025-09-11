@@ -10,7 +10,38 @@ func TestNew(t *testing.T) {
 		envValues         map[string]string
 		wantServerAddress string
 		wantError         bool
-	}{}
+	}{
+		{
+			name:              "should create a new Config instance with the default values",
+			envValues:         map[string]string{},
+			wantServerAddress: serverAddressEnvDefault,
+			wantError:         false,
+		},
+		{
+			name:              "should create a new Config instance with custom server address: localhost:8081",
+			envValues:         map[string]string{serverAddressEnvKey: "localhost:8081"},
+			wantServerAddress: "localhost:8081",
+			wantError:         false,
+		},
+		{
+			name:              "should create a new Config instance with custom server address: 127.0.0.1:3000",
+			envValues:         map[string]string{serverAddressEnvKey: "127.0.0.1:3000"},
+			wantServerAddress: "127.0.0.1:3000",
+			wantError:         false,
+		},
+		{
+			name:              "should return an error if the server address cannot be resolved: empty",
+			envValues:         map[string]string{serverAddressEnvKey: ""},
+			wantServerAddress: "",
+			wantError:         true,
+		},
+		{
+			name:              "should return an error if the server address cannot be resolved: invalid",
+			envValues:         map[string]string{serverAddressEnvKey: "invalid"},
+			wantServerAddress: "invalid",
+			wantError:         true,
+		},
+	}
 	for _, testCase := range testCases {
 		t.Run(testCase.name, func(t *testing.T) {
 			for envKey, envValue := range testCase.envValues {
