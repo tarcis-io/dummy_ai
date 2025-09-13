@@ -6,13 +6,19 @@ import (
 
 type (
 	Server struct {
-		router *http.ServeMux
+		address string
+		router  *http.ServeMux
 	}
 )
 
-func New() (*Server, error) {
+func New(address string) (*Server, error) {
 	server := &Server{
-		router: http.NewServeMux(),
+		address: address,
+		router:  http.NewServeMux(),
 	}
 	return server, nil
+}
+
+func (server *Server) Start() error {
+	return http.ListenAndServe(server.address, server.router)
 }
