@@ -4,7 +4,7 @@
 "use strict";
 
 /*
- * wasmRun fetches, instaniates and runs a WebAssembly module
+ * wasmRun fetches, instantiates and runs a WebAssembly module
  * compiled with Go.
  *
  * @param {string} wasmPath - The path to the Go WebAssembly module.
