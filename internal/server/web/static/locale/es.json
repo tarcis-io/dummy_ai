@@ -1,4 +1,6 @@
 {
 	"app": "DummyAI",
-	"appDescription": "Artificial intelligence for dummies."
+	"appDescription": "Artificial intelligence for dummies.",
+	"appDevelopedBy": "Desarrollado por t@rcis.io",
+	"appVersion": "Versión v0.0.1"
 }
