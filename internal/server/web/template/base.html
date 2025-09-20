@@ -5,6 +5,13 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+		<link rel="manifest" href="/static/config/manifest.json">
+		<link rel="icon" href="/static/img/favicon/favicon.ico" sizes="32x32">
+		<link rel="icon" href="/static/img/favicon/favicon.svg" type="image/svg+xml">
+		<link rel="apple-touch-icon" href="/static/img/favicon/apple_touch_icon.png">
+
+		<title>{{.Title}}</title>
+
 		<script src="/static/lib/wasm/wasm_exec.js"></script>
 		<script src="/static/lib/wasm/wasm_run.js"></script>
 		<script>
@@ -14,8 +21,6 @@
 
 		<link rel="stylesheet" href="/static/lib/app/app.css">
 		<script src="/static/lib/app/app.js"></script>
-
-		<title>{{.Title}}</title>
 	</head>
 
 	<body></body>
