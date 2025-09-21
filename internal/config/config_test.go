@@ -26,6 +26,15 @@ func TestNew(t *testing.T) {
 				}
 				return
 			}
+			if err != nil {
+				t.Fatalf("New() error got=%v want=nil", err)
+			}
+			if config == nil {
+				t.Fatal("New() *Config got=nil want!=nil")
+			}
+			if config.ServerAddress != testCase.wantServerAddress {
+				t.Errorf("New() *Config.ServerAddress got=%q want=%q", config.ServerAddress, testCase.wantServerAddress)
+			}
 		})
 	}
 }
