@@ -4,6 +4,7 @@ import (
 	"testing"
 )
 
+// TestNew verifies if the New function correctly creates a new Config instance.
 func TestNew(t *testing.T) {
 	testCases := []struct {
 		name              string
