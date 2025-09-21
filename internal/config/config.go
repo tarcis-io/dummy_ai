@@ -10,6 +10,7 @@ import (
 type (
 	// Config holds the configurations for the application.
 	Config struct {
+		// ServerAddress is the host and port for the server to listen on.
 		ServerAddress string
 	}
 )
