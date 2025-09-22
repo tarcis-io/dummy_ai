@@ -9,3 +9,10 @@ type (
 		router *http.ServeMux
 	}
 )
+
+func New() (*Server, error) {
+	server := &Server{
+		router: http.NewServeMux(),
+	}
+	return server, nil
+}
