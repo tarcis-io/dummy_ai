@@ -1,3 +1,4 @@
+// Package main is the entry point of the dummy_ai application.
 package main
 
 import (
@@ -8,6 +9,8 @@ import (
 	"dummy_ai/internal/server"
 )
 
+// main is the entry point of the dummy_ai application.
+// It loads the configurations, creates and starts the server.
 func main() {
 	config, err := config.New()
 	if err != nil {
