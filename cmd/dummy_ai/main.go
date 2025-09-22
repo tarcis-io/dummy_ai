@@ -12,18 +12,21 @@ import (
 // main is the entry point of the dummy_ai application.
 // It loads the configurations, creates and starts the server.
 func main() {
+	slog.Info("loading configurations...")
 	config, err := config.New()
 	if err != nil {
-		slog.Error("Failed to load configurations", "error", err)
+		slog.Error("failed to load configurations", "error", err)
 		os.Exit(1)
 	}
+	slog.Info("creating server...")
 	server, err := server.New()
 	if err != nil {
-		slog.Error("Failed to create server", "error", err)
+		slog.Error("failed to create server", "error", err)
 		os.Exit(1)
 	}
+	slog.Info("starting server...", "address", config.ServerAddress)
 	if err := server.Start(config.ServerAddress); err != nil {
-		slog.Error("Failed to start server", "error", err)
+		slog.Error("failed to start server", "error", err)
 		os.Exit(1)
 	}
 }
