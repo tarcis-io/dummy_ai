@@ -1,6 +1,7 @@
 package server
 
 import (
+	"fmt"
 	"net/http"
 )
 
@@ -15,4 +16,12 @@ func New() (*Server, error) {
 		router: http.NewServeMux(),
 	}
 	return server, nil
+}
+
+func (server *Server) Start(address string) error {
+	err := http.ListenAndServe(address, server.router)
+	if err != nil {
+		return fmt.Errorf("failed to start server error=%w", err)
+	}
+	return nil
 }
