@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net"
 	"os"
+	"strconv"
 )
 
 type (
@@ -57,7 +58,12 @@ func resolveServerAddress() (string, error) {
 // resolveServerShutdownTimeout resolves the server shutdown timeout configuration for the application.
 // It returns an error if the configuration cannot be resolved.
 func resolveServerShutdownTimeout() (int, error) {
-	return 0, nil
+	serverShutdownTimeoutEnvValue := getEnv(serverShutdownTimeoutEnvKey, serverShutdownTimeoutEnvDefault)
+	serverShutdownTimeout, err := strconv.Atoi(serverShutdownTimeoutEnvValue)
+	if err != nil {
+		return 0, fmt.Errorf("invalid server shutdown timeout %s=%q error=%w", serverShutdownTimeoutEnvKey, serverShutdownTimeoutEnvValue, err)
+	}
+	return serverShutdownTimeout, nil
 }
 
 // getEnv retrieves the value of the environment variable with the given key.
