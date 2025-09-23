@@ -12,9 +12,11 @@ type (
 	// Config holds the configurations for the application.
 	Config struct {
 		// ServerAddress is the host and port for the server to listen on.
+		// The default value is "0.0.0.0:8080".
 		ServerAddress string
 
 		// ServerShutdownTimeout is the timeout for the server to shut down gracefully.
+		// The default value is "10s".
 		ServerShutdownTimeout time.Duration
 	}
 )
