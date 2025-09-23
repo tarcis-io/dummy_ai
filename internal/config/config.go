@@ -12,13 +12,18 @@ type (
 	Config struct {
 		// ServerAddress is the host and port for the server to listen on.
 		ServerAddress string
+
+		// ServerShutdownTimeout is the timeout for the server to shutdown gracefully.
+		ServerShutdownTimeout int
 	}
 )
 
 const (
 	// Server configurations.
-	serverAddressEnvKey     = "SERVER_ADDRESS"
-	serverAddressEnvDefault = "0.0.0.0:8080"
+	serverAddressEnvKey             = "SERVER_ADDRESS"
+	serverAddressEnvDefault         = "0.0.0.0:8080"
+	serverShutdownTimeoutEnvKey     = "SERVER_SHUTDOWN_TIMEOUT"
+	serverShutdownTimeoutEnvDefault = "10"
 )
 
 // New creates and returns a new Config instance by resolving the configurations for the application.
