@@ -26,7 +26,8 @@ func main() {
 	}
 	slog.Info("starting server...", "address", config.ServerAddress)
 	if err := server.Start(config.ServerAddress); err != nil {
-		slog.Error("failed to start server", "error", err)
+		slog.Error("server stopped with error", "error", err)
 		os.Exit(1)
 	}
+	slog.Info("server stopped")
 }
