@@ -14,7 +14,7 @@ type (
 		// ServerAddress is the host and port for the server to listen on.
 		ServerAddress string
 
-		// ServerShutdownTimeout is the timeout for the server to shutdown gracefully.
+		// ServerShutdownTimeout is the timeout for the server to shut down gracefully.
 		ServerShutdownTimeout time.Duration
 	}
 )
