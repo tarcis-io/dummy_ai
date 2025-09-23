@@ -52,7 +52,7 @@ func New() (*Config, error) {
 func resolveServerAddress() (string, error) {
 	serverAddress := getEnv(serverAddressEnvKey, serverAddressEnvDefault)
 	if _, _, err := net.SplitHostPort(serverAddress); err != nil {
-		return "", fmt.Errorf("invalid server address %s=%q error=%w", serverAddressEnvKey, serverAddress, err)
+		return "", fmt.Errorf("invalid server address (%s) got=%q: %w", serverAddressEnvKey, serverAddress, err)
 	}
 	return serverAddress, nil
 }
@@ -63,10 +63,10 @@ func resolveServerShutdownTimeout() (time.Duration, error) {
 	serverShutdownTimeoutEnvValue := getEnv(serverShutdownTimeoutEnvKey, serverShutdownTimeoutEnvDefault)
 	serverShutdownTimeout, err := time.ParseDuration(serverShutdownTimeoutEnvValue)
 	if err != nil {
-		return 0, fmt.Errorf("invalid server shutdown timeout %s=%q error=%w", serverShutdownTimeoutEnvKey, serverShutdownTimeoutEnvValue, err)
+		return 0, fmt.Errorf("invalid server shutdown timeout (%s) got=%q: %w", serverShutdownTimeoutEnvKey, serverShutdownTimeoutEnvValue, err)
 	}
 	if serverShutdownTimeout <= 0 {
-		return 0, fmt.Errorf("server shutdown timeout must be greater than 0 %s=%q", serverShutdownTimeoutEnvKey, serverShutdownTimeout)
+		return 0, fmt.Errorf("server shutdown timeout (%s) must be greater than 0 got=%q", serverShutdownTimeoutEnvKey, serverShutdownTimeout)
 	}
 	return serverShutdownTimeout, nil
 }
