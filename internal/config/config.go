@@ -33,8 +33,13 @@ func New() (*Config, error) {
 	if err != nil {
 		return nil, err
 	}
+	serverShutdownTimeout, err := resolveServerShutdownTimeout()
+	if err != nil {
+		return nil, err
+	}
 	config := &Config{
-		ServerAddress: serverAddress,
+		ServerAddress:         serverAddress,
+		ServerShutdownTimeout: serverShutdownTimeout,
 	}
 	return config, nil
 }
@@ -47,6 +52,12 @@ func resolveServerAddress() (string, error) {
 		return "", fmt.Errorf("invalid server address %s=%q error=%w", serverAddressEnvKey, serverAddress, err)
 	}
 	return serverAddress, nil
+}
+
+// resolveServerShutdownTimeout resolves the server shutdown timeout configuration for the application.
+// It returns an error if the configuration cannot be resolved.
+func resolveServerShutdownTimeout() (int, error) {
+	return 0, nil
 }
 
 // getEnv retrieves the value of the environment variable with the given key.
