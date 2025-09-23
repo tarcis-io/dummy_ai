@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net"
 	"os"
-	"strconv"
+	"time"
 )
 
 type (
@@ -15,7 +15,7 @@ type (
 		ServerAddress string
 
 		// ServerShutdownTimeout is the timeout for the server to shutdown gracefully.
-		ServerShutdownTimeout int
+		ServerShutdownTimeout time.Duration
 	}
 )
 
@@ -24,7 +24,7 @@ const (
 	serverAddressEnvKey             = "SERVER_ADDRESS"
 	serverAddressEnvDefault         = "0.0.0.0:8080"
 	serverShutdownTimeoutEnvKey     = "SERVER_SHUTDOWN_TIMEOUT"
-	serverShutdownTimeoutEnvDefault = "10"
+	serverShutdownTimeoutEnvDefault = "10s"
 )
 
 // New creates and returns a new Config instance by resolving the configurations for the application.
@@ -57,9 +57,9 @@ func resolveServerAddress() (string, error) {
 
 // resolveServerShutdownTimeout resolves the server shutdown timeout configuration for the application.
 // It returns an error if the configuration cannot be resolved.
-func resolveServerShutdownTimeout() (int, error) {
+func resolveServerShutdownTimeout() (time.Duration, error) {
 	serverShutdownTimeoutEnvValue := getEnv(serverShutdownTimeoutEnvKey, serverShutdownTimeoutEnvDefault)
-	serverShutdownTimeout, err := strconv.Atoi(serverShutdownTimeoutEnvValue)
+	serverShutdownTimeout, err := time.ParseDuration(serverShutdownTimeoutEnvValue)
 	if err != nil {
 		return 0, fmt.Errorf("invalid server shutdown timeout %s=%q error=%w", serverShutdownTimeoutEnvKey, serverShutdownTimeoutEnvValue, err)
 	}
