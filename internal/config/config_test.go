@@ -20,7 +20,28 @@ type (
 // It covers default configurations, custom valid configurations
 // and error handling for invalid configurations.
 func TestNew(t *testing.T) {
-	testCases := []testCase{}
+	testCases := []testCase{
+		{
+			name: "should create a new Config instance with default values",
+			wantConfig: &Config{
+				ServerAddress:         serverAddressEnvDefault,
+				ServerShutdownTimeout: mustParseDuration(serverShutdownTimeoutEnvDefault),
+			},
+			wantError: false,
+		},
+		{
+			name: "should create a new Config instance with custom values",
+			envValues: map[string]string{
+				serverAddressEnvKey:         "localhost:8081",
+				serverShutdownTimeoutEnvKey: "15s",
+			},
+			wantConfig: &Config{
+				ServerAddress:         "localhost:8081",
+				ServerShutdownTimeout: mustParseDuration("15s"),
+			},
+			wantError: false,
+		},
+	}
 	for _, testCase := range testCases {
 		t.Run(testCase.name, func(t *testing.T) {
 			for envKey, envValue := range testCase.envValues {
