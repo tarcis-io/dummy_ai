@@ -65,8 +65,8 @@ func resolveServerShutdownTimeout() (time.Duration, error) {
 	if err != nil {
 		return 0, fmt.Errorf("invalid server shutdown timeout (%s) got=%q: %w", serverShutdownTimeoutEnvKey, serverShutdownTimeoutEnvValue, err)
 	}
-	if serverShutdownTimeout < time.Second {
-		return 0, fmt.Errorf("server shutdown timeout (%s) must be at least 1s got=%q", serverShutdownTimeoutEnvKey, serverShutdownTimeoutEnvValue)
+	if serverShutdownTimeout <= 0 {
+		return 0, fmt.Errorf("server shutdown timeout (%s) must be greater than 0s got=%q", serverShutdownTimeoutEnvKey, serverShutdownTimeout)
 	}
 	return serverShutdownTimeout, nil
 }
