@@ -8,8 +8,11 @@ import (
 
 // TestNew verifies if the New function correctly creates a new Config instance.
 func TestNew(t *testing.T) {
-	parseDuration := func(duration string) time.Duration {
-		timeDuration, _ := time.ParseDuration(duration)
+	mustParseDuration := func(duration string) time.Duration {
+		timeDuration, err := time.ParseDuration(duration)
+		if err != nil {
+			panic(err)
+		}
 		return timeDuration
 	}
 	testCases := []struct {
@@ -22,7 +25,7 @@ func TestNew(t *testing.T) {
 			name: "should create a new Config instance with default values",
 			wantConfig: &Config{
 				ServerAddress:         serverAddressEnvDefault,
-				ServerShutdownTimeout: parseDuration(serverShutdownTimeoutEnvDefault),
+				ServerShutdownTimeout: mustParseDuration(serverShutdownTimeoutEnvDefault),
 			},
 			wantError: false,
 		},
@@ -33,7 +36,7 @@ func TestNew(t *testing.T) {
 			},
 			wantConfig: &Config{
 				ServerAddress:         "127.0.0.1:8081",
-				ServerShutdownTimeout: parseDuration(serverShutdownTimeoutEnvDefault),
+				ServerShutdownTimeout: mustParseDuration(serverShutdownTimeoutEnvDefault),
 			},
 			wantError: false,
 		},
@@ -44,7 +47,7 @@ func TestNew(t *testing.T) {
 			},
 			wantConfig: &Config{
 				ServerAddress:         "localhost:3000",
-				ServerShutdownTimeout: parseDuration(serverShutdownTimeoutEnvDefault),
+				ServerShutdownTimeout: mustParseDuration(serverShutdownTimeoutEnvDefault),
 			},
 			wantError: false,
 		},
@@ -76,7 +79,7 @@ func TestNew(t *testing.T) {
 			},
 			wantConfig: &Config{
 				ServerAddress:         serverAddressEnvDefault,
-				ServerShutdownTimeout: parseDuration("20s"),
+				ServerShutdownTimeout: mustParseDuration("20s"),
 			},
 		},
 		{
@@ -86,7 +89,7 @@ func TestNew(t *testing.T) {
 			},
 			wantConfig: &Config{
 				ServerAddress:         serverAddressEnvDefault,
-				ServerShutdownTimeout: parseDuration("10m"),
+				ServerShutdownTimeout: mustParseDuration("10m"),
 			},
 		},
 		{
