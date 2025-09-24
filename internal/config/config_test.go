@@ -8,9 +8,10 @@ import (
 
 // TestNew verifies if the New function correctly creates a new Config instance.
 func TestNew(t *testing.T) {
-	serverShutdownTimeoutDefault, _ := time.ParseDuration(serverShutdownTimeoutEnvDefault)
-	serverShutdownTimeoutCustom0, _ := time.ParseDuration("20s")
-	serverShutdownTimeoutCustom1, _ := time.ParseDuration("10m")
+	parseDuration := func(duration string) time.Duration {
+		timeDuration, _ := time.ParseDuration(duration)
+		return timeDuration
+	}
 	testCases := []struct {
 		name       string
 		envValues  map[string]string
@@ -21,7 +22,7 @@ func TestNew(t *testing.T) {
 			name: "should create a new Config instance with default values",
 			wantConfig: &Config{
 				ServerAddress:         serverAddressEnvDefault,
-				ServerShutdownTimeout: serverShutdownTimeoutDefault,
+				ServerShutdownTimeout: parseDuration(serverShutdownTimeoutEnvDefault),
 			},
 			wantError: false,
 		},
@@ -32,7 +33,7 @@ func TestNew(t *testing.T) {
 			},
 			wantConfig: &Config{
 				ServerAddress:         "127.0.0.1:8081",
-				ServerShutdownTimeout: serverShutdownTimeoutDefault,
+				ServerShutdownTimeout: parseDuration(serverShutdownTimeoutEnvDefault),
 			},
 			wantError: false,
 		},
@@ -43,7 +44,7 @@ func TestNew(t *testing.T) {
 			},
 			wantConfig: &Config{
 				ServerAddress:         "localhost:3000",
-				ServerShutdownTimeout: serverShutdownTimeoutDefault,
+				ServerShutdownTimeout: parseDuration(serverShutdownTimeoutEnvDefault),
 			},
 			wantError: false,
 		},
@@ -75,7 +76,7 @@ func TestNew(t *testing.T) {
 			},
 			wantConfig: &Config{
 				ServerAddress:         serverAddressEnvDefault,
-				ServerShutdownTimeout: serverShutdownTimeoutCustom0,
+				ServerShutdownTimeout: parseDuration("20s"),
 			},
 		},
 		{
@@ -85,7 +86,7 @@ func TestNew(t *testing.T) {
 			},
 			wantConfig: &Config{
 				ServerAddress:         serverAddressEnvDefault,
-				ServerShutdownTimeout: serverShutdownTimeoutCustom1,
+				ServerShutdownTimeout: parseDuration("10m"),
 			},
 		},
 		{
