@@ -1,6 +1,7 @@
 package config
 
 import (
+	"reflect"
 	"testing"
 	"time"
 )
@@ -137,11 +138,8 @@ func TestNew(t *testing.T) {
 			if config == nil {
 				t.Fatal("New() *Config got=nil want!=nil")
 			}
-			if config.ServerAddress != testCase.wantConfig.ServerAddress {
-				t.Errorf("New() *Config.ServerAddress got=%q want=%q", config.ServerAddress, testCase.wantConfig.ServerAddress)
-			}
-			if config.ServerShutdownTimeout != testCase.wantConfig.ServerShutdownTimeout {
-				t.Errorf("New() *Config.ServerShutdownTimeout got=%q want=%q", config.ServerShutdownTimeout, testCase.wantConfig.ServerShutdownTimeout)
+			if !reflect.DeepEqual(config, testCase.wantConfig) {
+				t.Errorf("New() *Config got=%v want=%v", config, testCase.wantConfig)
 			}
 		})
 	}
