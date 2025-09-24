@@ -144,9 +144,6 @@ func TestNew(t *testing.T) {
 			if (err != nil) != testCase.wantError {
 				t.Fatalf("New() error got=%v wantError=%v", err, testCase.wantError)
 			}
-			if testCase.wantError {
-				return
-			}
 			if !reflect.DeepEqual(config, testCase.wantConfig) {
 				t.Fatalf("New() *Config\ngot=%#v\nwant=%#v", config, testCase.wantConfig)
 			}
