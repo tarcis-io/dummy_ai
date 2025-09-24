@@ -41,6 +41,34 @@ func TestNew(t *testing.T) {
 			},
 			wantError: false,
 		},
+		{
+			name: "should return an error if the server address cannot be resolved: empty",
+			envValues: map[string]string{
+				serverAddressEnvKey: "",
+			},
+			wantError: true,
+		},
+		{
+			name: "should return an error if the server address cannot be resolved: localhost",
+			envValues: map[string]string{
+				serverAddressEnvKey: "localhost",
+			},
+			wantError: true,
+		},
+		{
+			name: "should return an error if the server shutdown timeout cannot be resolved: empty",
+			envValues: map[string]string{
+				serverShutdownTimeoutEnvKey: "",
+			},
+			wantError: true,
+		},
+		{
+			name: "should return an error if the server shutdown timeout cannot be resolved: 15sec",
+			envValues: map[string]string{
+				serverShutdownTimeoutEnvKey: "15sec",
+			},
+			wantError: true,
+		},
 	}
 	for _, testCase := range testCases {
 		t.Run(testCase.name, func(t *testing.T) {
