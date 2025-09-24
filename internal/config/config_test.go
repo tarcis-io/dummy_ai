@@ -48,9 +48,9 @@ func TestNew(t *testing.T) {
 			wantError: true,
 		},
 		{
-			name: "should return an error if the server address cannot be resolved: localhost:999999",
+			name: "should return an error if the server address cannot be resolved: localhost",
 			envValues: map[string]string{
-				serverAddressEnvKey: "localhost:999999",
+				serverAddressEnvKey: "localhost",
 			},
 			wantError: true,
 		},
