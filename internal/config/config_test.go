@@ -75,23 +75,23 @@ func TestNew(t *testing.T) {
 			wantError: true,
 		},
 		{
-			name: "should create a new Config instance with custom server shutdown timeout: 20s",
+			name: "should create a new Config instance with custom server shutdown timeout: 15s",
 			envValues: map[string]string{
-				serverShutdownTimeoutEnvKey: "20s",
+				serverShutdownTimeoutEnvKey: "15s",
 			},
 			wantConfig: &Config{
 				ServerAddress:         serverAddressEnvDefault,
-				ServerShutdownTimeout: mustParseDuration("20s"),
+				ServerShutdownTimeout: mustParseDuration("15s"),
 			},
 		},
 		{
-			name: "should create a new Config instance with custom server shutdown timeout: 10m",
+			name: "should create a new Config instance with custom server shutdown timeout: 1m",
 			envValues: map[string]string{
-				serverShutdownTimeoutEnvKey: "10m",
+				serverShutdownTimeoutEnvKey: "1m",
 			},
 			wantConfig: &Config{
 				ServerAddress:         serverAddressEnvDefault,
-				ServerShutdownTimeout: mustParseDuration("10m"),
+				ServerShutdownTimeout: mustParseDuration("1m"),
 			},
 		},
 		{
@@ -121,6 +121,18 @@ func TestNew(t *testing.T) {
 				serverShutdownTimeoutEnvKey: "0s",
 			},
 			wantError: true,
+		},
+		{
+			name: "should create a new Config instance with custom values",
+			envValues: map[string]string{
+				serverAddressEnvKey:         ":9090",
+				serverShutdownTimeoutEnvKey: "10m",
+			},
+			wantConfig: &Config{
+				ServerAddress:         ":9090",
+				ServerShutdownTimeout: mustParseDuration("10m"),
+			},
+			wantError: false,
 		},
 	}
 	for _, testCase := range testCases {
