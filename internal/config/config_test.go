@@ -9,3 +9,10 @@ import (
 // and error handling for invalid configurations.
 func TestNew(t *testing.T) {
 }
+
+func assertError(t *testing.T, got error, wantError bool) {
+	t.Helper()
+	if (got != nil) != wantError {
+		t.Fatalf("error got=%v wantError=%t", got, wantError)
+	}
+}
