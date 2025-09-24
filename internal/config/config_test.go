@@ -13,8 +13,7 @@ func TestNew(t *testing.T) {
 		wantError  bool
 	}{
 		{
-			name:      "should create a new Config instance with default values",
-			envValues: map[string]string{},
+			name: "should create a new Config instance with default values",
 			wantConfig: &Config{
 				ServerAddress: serverAddressEnvDefault,
 			},
