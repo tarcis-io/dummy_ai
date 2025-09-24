@@ -8,6 +8,8 @@ import (
 // TestNew verifies if the New function correctly creates a new Config instance.
 func TestNew(t *testing.T) {
 	serverShutdownTimeoutDefault, _ := time.ParseDuration(serverShutdownTimeoutEnvDefault)
+	serverShutdownTimeoutCustom0, _ := time.ParseDuration("20s")
+	serverShutdownTimeoutCustom1, _ := time.ParseDuration("10m")
 	testCases := []struct {
 		name       string
 		envValues  map[string]string
@@ -64,6 +66,26 @@ func TestNew(t *testing.T) {
 				serverAddressEnvKey: "localhost:3000:",
 			},
 			wantError: true,
+		},
+		{
+			name: "should create a new Config instance with custom server shutdown timeout: 20s",
+			envValues: map[string]string{
+				serverShutdownTimeoutEnvKey: "20s",
+			},
+			wantConfig: &Config{
+				ServerAddress:         serverAddressEnvDefault,
+				ServerShutdownTimeout: serverShutdownTimeoutCustom0,
+			},
+		},
+		{
+			name: "should create a new Config instance with custom server shutdown timeout: 10m",
+			envValues: map[string]string{
+				serverShutdownTimeoutEnvKey: "10m",
+			},
+			wantConfig: &Config{
+				ServerAddress:         serverAddressEnvDefault,
+				ServerShutdownTimeout: serverShutdownTimeoutCustom1,
+			},
 		},
 		{
 			name: "should return an error if the server shutdown timeout cannot be resolved: empty",
