@@ -129,23 +129,14 @@ func TestNew(t *testing.T) {
 				t.Setenv(envKey, envValue)
 			}
 			config, err := New()
+			if (err != nil) != testCase.wantError {
+				t.Fatalf("New() error got=%v wantError=%v", err, testCase.wantError)
+			}
 			if testCase.wantError {
-				if err == nil {
-					t.Fatal("New() error got=nil want!=nil")
-				}
-				if config != nil {
-					t.Fatal("New() *Config got!=nil want=nil")
-				}
 				return
 			}
-			if err != nil {
-				t.Fatalf("New() error got=%v want=nil", err)
-			}
-			if config == nil {
-				t.Fatal("New() *Config got=nil want!=nil")
-			}
 			if !reflect.DeepEqual(config, testCase.wantConfig) {
-				t.Errorf("New() *Config got=%v want=%v", config, testCase.wantConfig)
+				t.Fatalf("New() *Config\ngot=%#v\nwant=%#v", config, testCase.wantConfig)
 			}
 		})
 	}
