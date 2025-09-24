@@ -11,6 +11,8 @@ import (
 func TestNew(t *testing.T) {
 }
 
+// mustParseDuration is a helper function that parses a duration string into a time.Duration.
+// It panics if the parsing fails.
 func mustParseDuration(duration string) time.Duration {
 	timeDuration, err := time.ParseDuration(duration)
 	if err != nil {
