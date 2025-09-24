@@ -69,6 +69,20 @@ func TestNew(t *testing.T) {
 			},
 			wantError: true,
 		},
+		{
+			name: "should return an error if the server shutdown timeout cannot be resolved: -15s",
+			envValues: map[string]string{
+				serverShutdownTimeoutEnvKey: "-15s",
+			},
+			wantError: true,
+		},
+		{
+			name: "should return an error if the server shutdown timeout cannot be resolved: 0s",
+			envValues: map[string]string{
+				serverShutdownTimeoutEnvKey: "0s",
+			},
+			wantError: true,
+		},
 	}
 	for _, testCase := range testCases {
 		t.Run(testCase.name, func(t *testing.T) {
