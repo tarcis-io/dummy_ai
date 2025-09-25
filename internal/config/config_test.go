@@ -50,6 +50,7 @@ func TestNew(t *testing.T) {
 				ServerAddress:         "127.0.0.1:3000",
 				ServerShutdownTimeout: mustParseDuration(serverShutdownTimeoutEnvDefault),
 			},
+			wantError: false,
 		},
 		{
 			name: "should create a new Config instance with custom server shutdown timeout: 1m",
@@ -60,6 +61,7 @@ func TestNew(t *testing.T) {
 				ServerAddress:         serverAddressEnvDefault,
 				ServerShutdownTimeout: mustParseDuration("1m"),
 			},
+			wantError: false,
 		},
 		{
 			name: "should return an error if the server address cannot be resolved: empty",
