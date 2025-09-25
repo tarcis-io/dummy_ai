@@ -8,12 +8,12 @@ import (
 
 func main() {
 	slog.SetDefault(slog.New(slog.NewJSONHandler(os.Stdout, nil)))
-	slog.Info("starting application")
+	slog.Info("Starting application")
 	if err := run(); err != nil {
-		slog.Error("application failed", "error", err)
+		slog.Error("Application failed", "error", err)
 		os.Exit(1)
 	}
-	slog.Info("application exited")
+	slog.Info("Application stopped successfully")
 }
 
 func run() error {
