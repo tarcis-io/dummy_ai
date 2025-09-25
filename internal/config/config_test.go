@@ -76,9 +76,9 @@ func TestNew(t *testing.T) {
 			wantError: true,
 		},
 		{
-			name: "should return an error if the server address cannot be resolved: 127.0.0:8080",
+			name: "should return an error if the server address cannot be resolved: 127.0.0.1:8080:",
 			envValues: map[string]string{
-				serverAddressEnvKey: "127.0.0:8080",
+				serverAddressEnvKey: "127.0.0.1:8080:",
 			},
 			wantError: true,
 		},
