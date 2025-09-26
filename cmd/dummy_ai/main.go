@@ -2,6 +2,7 @@
 package main
 
 import (
+	"fmt"
 	"log/slog"
 	"os"
 
@@ -23,14 +24,14 @@ func main() {
 func run() error {
 	config, err := config.New()
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to load config: %w", err)
 	}
 	server, err := server.New(config)
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to create server: %w", err)
 	}
 	if err := server.Run(); err != nil {
-		return err
+		return fmt.Errorf("server failed: %w", err)
 	}
 	return nil
 }
