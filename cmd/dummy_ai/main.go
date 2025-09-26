@@ -4,6 +4,9 @@ package main
 import (
 	"log/slog"
 	"os"
+
+	"dummy_ai/internal/config"
+	"dummy_ai/internal/server"
 )
 
 // main is the entry point for the dummy_ai application.
@@ -18,5 +21,16 @@ func main() {
 }
 
 func run() error {
+	config, err := config.New()
+	if err != nil {
+		return err
+	}
+	server, err := server.New(config)
+	if err != nil {
+		return err
+	}
+	if err := server.Run(); err != nil {
+		return err
+	}
 	return nil
 }
