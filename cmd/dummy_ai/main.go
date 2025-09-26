@@ -21,8 +21,8 @@ func main() {
 	slog.Info("Application stopped successfully")
 }
 
-// run runs the dummy_ai application.
-// It loads the configurations, creates and runs the server.
+// run loads the configurations, creates a new server and runs it.
+// It returns an error if any of the steps fail.
 func run() error {
 	config, err := config.New()
 	if err != nil {
