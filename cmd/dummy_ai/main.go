@@ -13,7 +13,7 @@ import (
 // main is the entry point for the dummy_ai application.
 func main() {
 	slog.SetDefault(slog.New(slog.NewJSONHandler(os.Stdout, nil)))
-	slog.Info("Starting application")
+	slog.Info("Running application")
 	if err := run(); err != nil {
 		slog.Error("Application failed", "error", err)
 		os.Exit(1)
