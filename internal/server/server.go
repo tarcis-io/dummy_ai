@@ -1,6 +1,7 @@
 package server
 
 import (
+	"errors"
 	"net/http"
 	"time"
 
@@ -26,5 +27,13 @@ func New(config *config.Config) (*Server, error) {
 }
 
 func (server *Server) Run() error {
+	httpServer := &http.Server{
+		Addr:    server.address,
+		Handler: server.router,
+	}
+	go func() {
+		if err := httpServer.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+		}
+	}()
 	return nil
 }
