@@ -46,12 +46,12 @@ func (server *Server) Run() error {
 	signal.Notify(shutdownSignalChan, syscall.SIGINT, syscall.SIGTERM)
 	select {
 	case err := <-errorChan:
-		return fmt.Errorf("failed: %w", err)
+		return fmt.Errorf("runtime server error: %w", err)
 	case <-shutdownSignalChan:
 		context, cancel := context.WithTimeout(context.Background(), server.shutdownTimeout)
 		defer cancel()
 		if err := httpServer.Shutdown(context); err != nil {
-			return fmt.Errorf("failed: %w", err)
+			return fmt.Errorf("failed to shut down server gracefully: %w", err)
 		}
 		return nil
 	}
