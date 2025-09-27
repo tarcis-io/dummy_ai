@@ -31,9 +31,14 @@ func (server *Server) Run() error {
 		Addr:    server.address,
 		Handler: server.router,
 	}
+	errorChan := make(chan error, 1)
 	go func() {
 		if err := httpServer.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+			errorChan <- err
 		}
 	}()
-	return nil
+	select {
+	case err := <-errorChan:
+		return err
+	}
 }
