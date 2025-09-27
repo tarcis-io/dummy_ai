@@ -15,22 +15,20 @@ import (
 )
 
 type (
-	// Server represents an HTTP server.
+	// Server is an HTTP server.
 	Server struct {
 		// address is the host and port for the server to listen on.
 		address string
 
-		// router is the HTTP request multiplexer for the server.
+		// router is the HTTP request multiplexer.
 		router http.Handler
 
-		// shutdownTimeout is the timeout for the server to shut down gracefully.
+		// shutdownTimeout is the maximum duration for a graceful shutdown.
 		shutdownTimeout time.Duration
 	}
 )
 
-// New creates and returns a new Server instance.
-// It takes a config.Config instance as an argument
-// and returns an error if the server cannot be created.
+// New creates and returns a new Server instance based on the provided configuration.
 func New(config *config.Config) (*Server, error) {
 	router := http.NewServeMux()
 	server := &Server{
@@ -41,8 +39,7 @@ func New(config *config.Config) (*Server, error) {
 	return server, nil
 }
 
-// Run starts the HTTP server, listens for incoming requests and handles graceful shutdown.
-// This function blocks until the server is shut down.
+// Run starts the HTTP server and blocks until a graceful shutdown signal is received.
 // It returns an error if an error occurs while starting, running or shutting down the server.
 func (server *Server) Run() error {
 	httpServer := &http.Server{
