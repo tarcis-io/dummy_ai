@@ -1,6 +1,7 @@
 package server
 
 import (
+	"context"
 	"errors"
 	"net/http"
 	"os"
@@ -46,6 +47,11 @@ func (server *Server) Run() error {
 	case err := <-errorChan:
 		return err
 	case <-shutdownChan:
+		context, cancel := context.WithTimeout(context.Background(), server.shutdownTimeout)
+		defer cancel()
+		if err := httpServer.Shutdown(context); err != nil {
+			return err
+		}
 		return nil
 	}
 }
