@@ -3,6 +3,7 @@ package server
 
 import (
 	"context"
+	"embed"
 	"errors"
 	"fmt"
 	"net/http"
@@ -26,6 +27,11 @@ type (
 		// shutdownTimeout is the maximum duration for a graceful shutdown.
 		shutdownTimeout time.Duration
 	}
+)
+
+var (
+	//go:embed web
+	webFS embed.FS
 )
 
 // New creates and returns a new Server instance based on the provided configuration.
