@@ -16,7 +16,7 @@ import (
 type (
 	Server struct {
 		address         string
-		router          *http.ServeMux
+		router          http.Handler
 		shutdownTimeout time.Duration
 	}
 )
