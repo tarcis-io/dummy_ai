@@ -3,6 +3,9 @@ package server
 import (
 	"errors"
 	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
 	"time"
 
 	"dummy_ai/internal/config"
@@ -37,8 +40,12 @@ func (server *Server) Run() error {
 			errorChan <- err
 		}
 	}()
+	shutdownChan := make(chan os.Signal, 1)
+	signal.Notify(shutdownChan, syscall.SIGINT, syscall.SIGTERM)
 	select {
 	case err := <-errorChan:
 		return err
+	case <-shutdownChan:
+		return nil
 	}
 }
