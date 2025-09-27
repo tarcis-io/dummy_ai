@@ -1,3 +1,4 @@
+// Package server provides functionality for creating and running an HTTP server.
 package server
 
 import (
@@ -14,13 +15,22 @@ import (
 )
 
 type (
+	// Server represents an HTTP server.
 	Server struct {
-		address         string
-		router          http.Handler
+		// address is the host and port for the server to listen on.
+		address string
+
+		// router is the HTTP request multiplexer for the server.
+		router http.Handler
+
+		// shutdownTimeout is the timeout for the server to shut down gracefully.
 		shutdownTimeout time.Duration
 	}
 )
 
+// New creates and returns a new Server instance.
+// It takes a config.Config instance as an argument
+// and returns an error if the server cannot be created.
 func New(config *config.Config) (*Server, error) {
 	router := http.NewServeMux()
 	server := &Server{
@@ -31,6 +41,9 @@ func New(config *config.Config) (*Server, error) {
 	return server, nil
 }
 
+// Run starts the server and listens for incoming requests
+// and blocks until the server is shut down.
+// It returns an error if the server cannot be started, is interrupted or shut down.
 func (server *Server) Run() error {
 	httpServer := &http.Server{
 		Addr:    server.address,
