@@ -3,6 +3,7 @@ package server
 import (
 	"context"
 	"errors"
+	"fmt"
 	"net/http"
 	"os"
 	"os/signal"
@@ -41,16 +42,16 @@ func (server *Server) Run() error {
 			errorChan <- err
 		}
 	}()
-	shutdownChan := make(chan os.Signal, 1)
-	signal.Notify(shutdownChan, syscall.SIGINT, syscall.SIGTERM)
+	shutdownSignalChan := make(chan os.Signal, 1)
+	signal.Notify(shutdownSignalChan, syscall.SIGINT, syscall.SIGTERM)
 	select {
 	case err := <-errorChan:
-		return err
-	case <-shutdownChan:
+		return fmt.Errorf("failed: %w", err)
+	case <-shutdownSignalChan:
 		context, cancel := context.WithTimeout(context.Background(), server.shutdownTimeout)
 		defer cancel()
 		if err := httpServer.Shutdown(context); err != nil {
-			return err
+			return fmt.Errorf("failed: %w", err)
 		}
 		return nil
 	}
