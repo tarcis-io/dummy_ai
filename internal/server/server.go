@@ -41,9 +41,9 @@ func New(config *config.Config) (*Server, error) {
 	return server, nil
 }
 
-// Run starts the server and listens for incoming requests
-// and blocks until the server is shut down.
-// It returns an error if the server cannot be started, is interrupted or shut down.
+// Run starts the HTTP server, listens for incoming requests and handles graceful shutdown.
+// This function blocks until the server is shut down.
+// It returns an error if an error occurs while starting, running or shutting down the server.
 func (server *Server) Run() error {
 	httpServer := &http.Server{
 		Addr:    server.address,
