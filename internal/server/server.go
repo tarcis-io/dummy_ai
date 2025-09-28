@@ -29,6 +29,11 @@ type (
 	}
 )
 
+const (
+	staticFilesDirectory  = "web/static"
+	staticFilesPathPrefix = "/static/"
+)
+
 var (
 	//go:embed web
 	webFS embed.FS
