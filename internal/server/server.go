@@ -22,7 +22,7 @@ type (
 		address string
 
 		// router is the HTTP request multiplexer.
-		router http.Handler
+		router *http.ServeMux
 
 		// shutdownTimeout is the maximum duration for a graceful shutdown.
 		shutdownTimeout time.Duration
