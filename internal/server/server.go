@@ -81,6 +81,8 @@ func (server *Server) Run() error {
 	}
 }
 
+// registerStaticFiles registers the static files handler on the server's router.
+// It returns an error if the static files directory cannot be opened.
 func (server *Server) registerStaticFiles() error {
 	staticFilesFS, err := fs.Sub(webFS, staticFilesDirectory)
 	if err != nil {
