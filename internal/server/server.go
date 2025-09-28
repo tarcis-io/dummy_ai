@@ -33,6 +33,9 @@ type (
 const (
 	staticFilesDirectory  = "web/static"
 	staticFilesPathPrefix = "/static/"
+
+	cacheControlHeaderKey   = "Cache-Control"
+	cacheControlHeaderValue = "public, max-age=86400"
 )
 
 var (
@@ -88,7 +91,11 @@ func (server *Server) registerStaticFiles() error {
 	if err != nil {
 		return fmt.Errorf("failed to open static files directory: %w", err)
 	}
-	server.router.Handle(staticFilesPathPrefix, http.StripPrefix(staticFilesPathPrefix, http.FileServerFS(staticFilesFS)))
+	staticFilesHeaders := map[string]string{
+		cacheControlHeaderKey: cacheControlHeaderValue,
+	}
+	staticFilesHandler := withHeaders(staticFilesHeaders, http.FileServerFS(staticFilesFS))
+	server.router.Handle(staticFilesPathPrefix, http.StripPrefix(staticFilesPathPrefix, staticFilesHandler))
 	return nil
 }
 
