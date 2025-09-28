@@ -34,8 +34,11 @@ const (
 	staticFilesDirectory  = "web/static"
 	staticFilesPathPrefix = "/static/"
 	faviconStaticFilePath = "/favicon.ico"
+	faviconStaticFile     = staticFilesDirectory + "/img/favicon/favicon.ico"
 	robotsStaticFilePath  = "/robots.txt"
+	robotsStaticFile      = staticFilesDirectory + "/config/robots.txt"
 	sitemapStaticFilePath = "/sitemap.xml"
+	sitemapStaticFile     = staticFilesDirectory + "/config/sitemap.xml"
 
 	cacheControlHeaderKey            = "Cache-Control"
 	cacheControlHeaderValue          = "public, max-age=86400"
