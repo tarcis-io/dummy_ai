@@ -31,8 +31,8 @@ type (
 )
 
 const (
-	staticFilesDirectory  = "web/static"
 	staticFilesPathPrefix = "/static/"
+	staticFilesDirectory  = "web/static"
 	faviconStaticFilePath = "/favicon.ico"
 	faviconStaticFile     = staticFilesDirectory + "/img/favicon/favicon.ico"
 	robotsStaticFilePath  = "/robots.txt"
