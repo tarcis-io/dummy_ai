@@ -84,7 +84,7 @@ func (server *Server) Run() error {
 func (server *Server) registerStaticFiles() error {
 	staticFilesFS, err := fs.Sub(webFS, staticFilesDirectory)
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to open static files directory: %w", err)
 	}
 	server.router.Handle(staticFilesPathPrefix, http.StripPrefix(staticFilesPathPrefix, http.FileServerFS(staticFilesFS)))
 	return nil
