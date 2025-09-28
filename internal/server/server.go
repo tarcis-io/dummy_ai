@@ -6,6 +6,7 @@ import (
 	"embed"
 	"errors"
 	"fmt"
+	"io/fs"
 	"net/http"
 	"os"
 	"os/signal"
@@ -81,5 +82,10 @@ func (server *Server) Run() error {
 }
 
 func (server *Server) registerStaticFiles() error {
+	staticFilesFS, err := fs.Sub(webFS, staticFilesDirectory)
+	if err != nil {
+		return err
+	}
+	server.router.Handle(staticFilesPathPrefix, http.StripPrefix(staticFilesPathPrefix, http.FileServerFS(staticFilesFS)))
 	return nil
 }
