@@ -89,3 +89,12 @@ func (server *Server) registerStaticFiles() error {
 	server.router.Handle(staticFilesPathPrefix, http.StripPrefix(staticFilesPathPrefix, http.FileServerFS(staticFilesFS)))
 	return nil
 }
+
+func withHeaders(headers map[string]string, next http.Handler) http.Handler {
+	return http.HandlerFunc(func(responseWriter http.ResponseWriter, request *http.Request) {
+		for headerKey, headerValue := range headers {
+			responseWriter.Header().Set(headerKey, headerValue)
+		}
+		next.ServeHTTP(responseWriter, request)
+	})
+}
