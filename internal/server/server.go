@@ -41,11 +41,10 @@ var (
 
 // New creates and returns a new Server instance based on the provided configuration.
 func New(config *config.Config) (*Server, error) {
-	router := http.NewServeMux()
 	server := &Server{
 		address:         config.ServerAddress,
 		shutdownTimeout: config.ServerShutdownTimeout,
-		router:          router,
+		router:          http.NewServeMux(),
 	}
 	return server, nil
 }
