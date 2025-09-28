@@ -33,6 +33,9 @@ type (
 const (
 	staticFilesDirectory  = "web/static"
 	staticFilesPathPrefix = "/static/"
+	faviconStaticFilePath = "/favicon.ico"
+	robotsStaticFilePath  = "/robots.txt"
+	sitemapStaticFilePath = "/sitemap.xml"
 
 	cacheControlHeaderKey            = "Cache-Control"
 	cacheControlHeaderValue          = "public, max-age=86400"
