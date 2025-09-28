@@ -90,6 +90,7 @@ func (server *Server) registerStaticFiles() error {
 	return nil
 }
 
+// withHeaders is a middleware function that sets the provided headers on the response.
 func withHeaders(headers map[string]string, next http.Handler) http.Handler {
 	return http.HandlerFunc(func(responseWriter http.ResponseWriter, request *http.Request) {
 		for headerKey, headerValue := range headers {
