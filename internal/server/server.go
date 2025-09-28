@@ -46,6 +46,9 @@ func New(config *config.Config) (*Server, error) {
 		shutdownTimeout: config.ServerShutdownTimeout,
 		router:          http.NewServeMux(),
 	}
+	if err := server.registerStaticFiles(); err != nil {
+		return nil, err
+	}
 	return server, nil
 }
 
@@ -75,4 +78,8 @@ func (server *Server) Run() error {
 		}
 		return nil
 	}
+}
+
+func (server *Server) registerStaticFiles() error {
+	return nil
 }
