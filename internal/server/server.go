@@ -68,6 +68,7 @@ const (
 )
 
 var (
+	// webFS holds the embedded file system for the web directory.
 	//go:embed web
 	webFS embed.FS
 )
