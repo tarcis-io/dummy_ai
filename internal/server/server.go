@@ -57,14 +57,14 @@ const (
 	sitemapFSPath    = "config/sitemap.xml"
 
 	// HTTP header keys and values.
-	cacheControlHeaderKey            = "Cache-Control"
-	cacheControlHeaderValue          = "public, max-age=86400"
-	contentSecurityPolicyHeaderKey   = "Content-Security-Policy"
-	contentSecurityPolicyHeaderValue = "default-src 'self';"
-	xContentTypeOptionsHeaderKey     = "X-Content-Type-Options"
-	xContentTypeOptionsHeaderValue   = "nosniff"
-	xFrameOptionsHeaderKey           = "X-Frame-Options"
-	xFrameOptionsHeaderValue         = "DENY"
+	cacheControlHeaderKey                 = "Cache-Control"
+	cacheControlPublicOneDayHeader        = "public, max-age=86400"
+	contentSecurityPolicyHeaderKey        = "Content-Security-Policy"
+	contentSecurityPolicySameOriginHeader = "default-src 'self';"
+	xContentTypeOptionsHeaderKey          = "X-Content-Type-Options"
+	xContentTypeOptionsNoSniffHeader      = "nosniff"
+	xFrameOptionsHeaderKey                = "X-Frame-Options"
+	xFrameOptionsDenyHeader               = "DENY"
 )
 
 var (
@@ -125,10 +125,10 @@ func (server *Server) registerStaticFiles() error {
 		return fmt.Errorf("failed to open static files directory: %w", err)
 	}
 	staticFilesHeaders := map[string]string{
-		cacheControlHeaderKey:          cacheControlHeaderValue,
-		contentSecurityPolicyHeaderKey: contentSecurityPolicyHeaderValue,
-		xContentTypeOptionsHeaderKey:   xContentTypeOptionsHeaderValue,
-		xFrameOptionsHeaderKey:         xFrameOptionsHeaderValue,
+		cacheControlHeaderKey:          cacheControlPublicOneDayHeader,
+		contentSecurityPolicyHeaderKey: contentSecurityPolicySameOriginHeader,
+		xContentTypeOptionsHeaderKey:   xContentTypeOptionsNoSniffHeader,
+		xFrameOptionsHeaderKey:         xFrameOptionsDenyHeader,
 	}
 	staticFilesHandler := withHeaders(staticFilesHeaders, http.FileServerFS(staticFilesFS))
 	server.router.Handle(staticPath, http.StripPrefix(staticPathPrefix, staticFilesHandler))
