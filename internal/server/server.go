@@ -117,6 +117,10 @@ func (server *Server) registerStaticFiles() error {
 		sitemapStaticFilePath: sitemapStaticFile,
 	}
 	for rootStaticFilePath, rootStaticFile := range rootStaticFiles {
+		rootStaticFileHandler := http.HandlerFunc(func(responseWriter http.ResponseWriter, request *http.Request) {
+			http.ServeFileFS(responseWriter, request, staticFilesFS, rootStaticFile)
+		})
+		server.router.Handle(rootStaticFilePath, withHeaders(staticFilesHeaders, rootStaticFileHandler))
 	}
 	return nil
 }
