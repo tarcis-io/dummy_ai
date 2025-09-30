@@ -111,6 +111,13 @@ func (server *Server) registerStaticFiles() error {
 	}
 	staticFilesHandler := withHeaders(staticFilesHeaders, http.FileServerFS(staticFilesFS))
 	server.router.Handle(staticFilesPathPrefix, http.StripPrefix(staticFilesPathPrefix, staticFilesHandler))
+	rootStaticFiles := map[string]string{
+		faviconStaticFilePath: faviconStaticFile,
+		robotsStaticFilePath:  robotsStaticFile,
+		sitemapStaticFilePath: sitemapStaticFile,
+	}
+	for rootStaticFilePath, rootStaticFile := range rootStaticFiles {
+	}
 	return nil
 }
 
