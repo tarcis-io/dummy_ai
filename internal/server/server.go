@@ -45,7 +45,7 @@ type (
 )
 
 const (
-	// Static
+	// Static asset configurations.
 	staticPathPrefix = "/static/"
 	staticPath       = "GET " + staticPathPrefix
 	staticFSPath     = "web/static"
