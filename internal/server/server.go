@@ -17,7 +17,7 @@ import (
 )
 
 type (
-	// Server is an HTTP server.
+	// Server holds the configuration and dependencies for the HTTP server.
 	Server struct {
 		// address is the host and port for the server to listen on.
 		address string
