@@ -25,7 +25,21 @@ type (
 		// router is the HTTP request multiplexer.
 		router *http.ServeMux
 
-		// shutdownTimeout is the maximum duration for a graceful shutdown.
+		// readTimeout is the maximum duration for reading the entire request,
+		// including the body.
+		readTimeout time.Duration
+
+		// readHeaderTimeout is the amount of time allowed to read request headers.
+		readHeaderTimeout time.Duration
+
+		// writeTimeout is the maximum duration before timing out writes of the response.
+		writeTimeout time.Duration
+
+		// idleTimeout is the maximum amount of time to wait for the next request
+		// when keep-alives are enabled.
+		idleTimeout time.Duration
+
+		// shutdownTimeout is the maximum duration to wait for a graceful shutdown.
 		shutdownTimeout time.Duration
 	}
 )
@@ -76,8 +90,12 @@ func New(config *config.Config) (*Server, error) {
 // It returns an error if an error occurs while starting, running or shutting down the server.
 func (server *Server) Run() error {
 	httpServer := &http.Server{
-		Addr:    server.address,
-		Handler: server.router,
+		Addr:              server.address,
+		Handler:           server.router,
+		ReadTimeout:       server.readTimeout,
+		ReadHeaderTimeout: server.readHeaderTimeout,
+		WriteTimeout:      server.writeTimeout,
+		IdleTimeout:       server.idleTimeout,
 	}
 	errorChan := make(chan error, 1)
 	go func() {
