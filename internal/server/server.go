@@ -31,6 +31,8 @@ type (
 )
 
 const (
+	// Static files paths and routes.
+	// Routes are relative to the static files directory.
 	staticFilesPathPrefix = "/static/"
 	staticFilesDirectory  = "web/static"
 	faviconStaticFilePath = "/favicon.ico"
@@ -40,6 +42,7 @@ const (
 	sitemapStaticFilePath = "/sitemap.xml"
 	sitemapStaticFile     = "config/sitemap.xml"
 
+	// HTTP header keys and values.
 	cacheControlHeaderKey            = "Cache-Control"
 	cacheControlHeaderValue          = "public, max-age=86400"
 	contentSecurityPolicyHeaderKey   = "Content-Security-Policy"
