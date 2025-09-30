@@ -45,17 +45,16 @@ type (
 )
 
 const (
-	// Static files paths and routes.
-	// Routes are relative to the static files directory.
-	staticFilesURLPathPrefix  = "/static/"
-	staticFilesURLPathPattern = "GET " + staticFilesURLPathPrefix
-	staticFilesFSDirectory    = "web/static"
-	faviconURLPathPattern     = "GET /favicon.ico"
-	faviconFSPath             = "img/favicon/favicon.ico"
-	robotsURLPathPattern      = "GET /robots.txt"
-	robotsFSPath              = "config/robots.txt"
-	sitemapURLPathPattern     = "GET /sitemap.xml"
-	sitemapFSPath             = "config/sitemap.xml"
+	// Static
+	staticPathPrefix = "/static/"
+	staticPath       = "GET " + staticPathPrefix
+	staticFSPath     = "web/static"
+	faviconPath      = "GET /favicon.ico"
+	faviconFSPath    = "img/favicon/favicon.ico"
+	robotsPath       = "GET /robots.txt"
+	robotsFSPath     = "config/robots.txt"
+	sitemapPath      = "GET /sitemap.xml"
+	sitemapFSPath    = "config/sitemap.xml"
 
 	// HTTP header keys and values.
 	cacheControlHeaderKey            = "Cache-Control"
@@ -121,7 +120,7 @@ func (server *Server) Run() error {
 // registerStaticFiles registers the static files handler on the server's router.
 // It returns an error if the static files directory cannot be opened.
 func (server *Server) registerStaticFiles() error {
-	staticFilesFS, err := fs.Sub(webFS, staticFilesFSDirectory)
+	staticFilesFS, err := fs.Sub(webFS, staticFSPath)
 	if err != nil {
 		return fmt.Errorf("failed to open static files directory: %w", err)
 	}
@@ -132,11 +131,11 @@ func (server *Server) registerStaticFiles() error {
 		xFrameOptionsHeaderKey:         xFrameOptionsHeaderValue,
 	}
 	staticFilesHandler := withHeaders(staticFilesHeaders, http.FileServerFS(staticFilesFS))
-	server.router.Handle(staticFilesURLPathPattern, http.StripPrefix(staticFilesURLPathPrefix, staticFilesHandler))
+	server.router.Handle(staticPath, http.StripPrefix(staticPathPrefix, staticFilesHandler))
 	rootStaticFiles := map[string]string{
-		faviconURLPathPattern: faviconFSPath,
-		robotsURLPathPattern:  robotsFSPath,
-		sitemapURLPathPattern: sitemapFSPath,
+		faviconPath: faviconFSPath,
+		robotsPath:  robotsFSPath,
+		sitemapPath: sitemapFSPath,
 	}
 	for rootStaticFilePath, rootStaticFile := range rootStaticFiles {
 		rootStaticFileHandler := http.HandlerFunc(func(responseWriter http.ResponseWriter, request *http.Request) {
